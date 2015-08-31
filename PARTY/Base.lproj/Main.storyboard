@@ -320,44 +320,6 @@
             </objects>
             <point key="canvasLocation" x="11167" y="-95"/>
         </scene>
-        <!--home-->
-        <scene sceneID="ZqJ-pa-Pri">
-            <objects>
-                <viewController title="home" id="euf-1d-pxH" customClass="feedappearanceViewController" customModule="PARTY" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="cTX-jp-swp"/>
-                        <viewControllerLayoutGuide type="bottom" id="Ilc-Ua-edB"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="4mT-Yj-H9c">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="bb3-E6-cSM">
-                                <rect key="frame" x="0.0" y="28" width="600" height="523"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="600" id="mwh-ij-yX4"/>
-                                </constraints>
-                            </mapView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="bb3-E6-cSM" firstAttribute="top" secondItem="cTX-jp-swp" secondAttribute="bottom" constant="8" id="0eg-cz-4bd"/>
-                            <constraint firstItem="bb3-E6-cSM" firstAttribute="leading" secondItem="4mT-Yj-H9c" secondAttribute="leading" id="gOp-nn-TXj"/>
-                            <constraint firstItem="Ilc-Ua-edB" firstAttribute="top" secondItem="bb3-E6-cSM" secondAttribute="bottom" id="tOg-ZO-4X0"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" title="PARTY" id="wZ4-SD-wR5"/>
-                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
-                    <nil key="simulatedTopBarMetrics"/>
-                    <connections>
-                        <outlet property="mapView" destination="bb3-E6-cSM" id="Xer-9B-6Sa"/>
-                        <segue destination="DIN-vJ-5dH" kind="show" identifier="showmap" id="gfA-Cz-aFS"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="feh-pb-klt" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="9412" y="-547"/>
-        </scene>
         <!--View Controller-->
         <scene sceneID="MjF-AX-Kcd">
             <objects>
@@ -379,7 +341,7 @@
         <!--Home View Controller-->
         <scene sceneID="9Aq-tF-Isg">
             <objects>
-                <tabBarController storyboardIdentifier="homescreen" id="e3c-9B-tZc" customClass="homeViewController" customModule="PARTY" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="homescreen" modalPresentationStyle="currentContext" id="e3c-9B-tZc" customClass="homeViewController" customModule="PARTY" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="MEO-TS-TWr"/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <nil key="simulatedTopBarMetrics"/>
@@ -393,6 +355,7 @@
                         <segue destination="QHN-Z3-OUh" kind="presentation" identifier="homeview" id="D1T-Lb-Wgz"/>
                         <segue destination="eWA-hF-KlD" kind="relationship" relationship="viewControllers" id="a0i-yo-MPy"/>
                         <segue destination="Rwt-yI-19H" kind="relationship" relationship="viewControllers" id="Nye-Lb-vgn"/>
+                        <segue destination="7Q2-hF-oYp" kind="relationship" relationship="viewControllers" id="Q2N-wu-ghR"/>
                         <segue destination="Uvq-5W-44d" kind="relationship" relationship="viewControllers" id="snw-tB-s9Y"/>
                         <segue destination="Yka-T4-sr7" kind="relationship" relationship="viewControllers" id="RmF-P4-AFg"/>
                     </connections>
@@ -404,7 +367,7 @@
         <!--View Controller-->
         <scene sceneID="C4t-iG-jRD">
             <objects>
-                <viewController id="7Q2-hF-oYp" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="currentContext" id="7Q2-hF-oYp" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="1KA-Qv-Xe9"/>
                         <viewControllerLayoutGuide type="bottom" id="YlG-oZ-tL5"/>
@@ -431,6 +394,7 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="" image="importbutton-1x" id="NMF-MP-N5z"/>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="xgK-i1-Ey8"/>
                     <nil key="simulatedTopBarMetrics"/>
@@ -438,7 +402,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I5l-xd-IRB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4993" y="1181"/>
+            <point key="canvasLocation" x="4903" y="1006"/>
         </scene>
         <!--Upload View Controller-->
         <scene sceneID="1xp-EN-WW6">
@@ -776,12 +740,41 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="euf-1d-pxH" kind="relationship" relationship="rootViewController" id="l8A-3U-s8c"/>
+                        <segue destination="83V-Mt-cUg" kind="relationship" relationship="rootViewController" id="al6-ou-AGh"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0nw-xR-QGZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="8548" y="-546"/>
+        </scene>
+        <!--Table View Controller-->
+        <scene sceneID="epG-aG-Bsz">
+            <objects>
+                <tableViewController id="83V-Mt-cUg" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="czq-Uv-rAy">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="rHg-Xf-r3B">
+                                <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rHg-Xf-r3B" id="vCt-Ew-vzc">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="83V-Mt-cUg" id="Gyx-iN-45e"/>
+                            <outlet property="delegate" destination="83V-Mt-cUg" id="DQH-gZ-SYU"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="Om3-jm-X6e"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8hb-gY-v0M" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="9382" y="-546"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="11W-LM-SpP">
@@ -847,6 +840,7 @@
         <image name="Ticket-25" width="25" height="25"/>
         <image name="User Male-25" width="25" height="25"/>
         <image name="camuploadbadgefinal" width="2480" height="3507"/>
+        <image name="importbutton-1x" width="30" height="30"/>
         <image name="upload-badgefinal" width="2480" height="3507"/>
         <image name="uploadvidcamfinal" width="2480" height="3507"/>
     </resources>
