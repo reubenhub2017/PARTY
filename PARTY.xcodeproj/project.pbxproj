@@ -35,6 +35,7 @@
 		AED1A38B1B40A16F00CCB553 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AED1A38A1B40A16F00CCB553 /* Images.xcassets */; };
 		AED1A38E1B40A16F00CCB553 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = AED1A38C1B40A16F00CCB553 /* LaunchScreen.xib */; };
 		AED1A39A1B40A16F00CCB553 /* PARTYTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED1A3991B40A16F00CCB553 /* PARTYTests.swift */; };
+		AEDF7A9D1B93DB9000C8D83A /* homefeedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEDF7A9C1B93DB9000C8D83A /* homefeedTableViewController.swift */; };
 		AEE870381B7BAD1E0072F399 /* registrationcontroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE870371B7BAD1E0072F399 /* registrationcontroller.swift */; };
 /* End PBXBuildFile section */
 
@@ -83,6 +84,7 @@
 		AED1A3931B40A16F00CCB553 /* PARTYTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PARTYTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AED1A3981B40A16F00CCB553 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AED1A3991B40A16F00CCB553 /* PARTYTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PARTYTests.swift; sourceTree = "<group>"; };
+		AEDF7A9C1B93DB9000C8D83A /* homefeedTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = homefeedTableViewController.swift; sourceTree = "<group>"; };
 		AEE870371B7BAD1E0072F399 /* registrationcontroller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = registrationcontroller.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -168,6 +170,7 @@
 			isa = PBXGroup;
 			children = (
 				AE31126B1B8398EA00DFC94F /* feedappearanceViewController.swift */,
+				AEDF7A9C1B93DB9000C8D83A /* homefeedTableViewController.swift */,
 				AE1E0D8C1B8EABE100AE587B /* uploadViewController.swift */,
 				AE8C3F5F1B7EF90400E83E18 /* profileViewController.swift */,
 				AE73EC0C1B7D94C300E4F45A /* homeViewController.swift */,
@@ -316,6 +319,7 @@
 				AE8C3F601B7EF90400E83E18 /* profileViewController.swift in Sources */,
 				AE81E67A1B7576A70082FAAF /* secondviewViewController.swift in Sources */,
 				AED1A3821B40A16F00CCB553 /* AppDelegate.swift in Sources */,
+				AEDF7A9D1B93DB9000C8D83A /* homefeedTableViewController.swift in Sources */,
 				AE1E0D8D1B8EABE100AE587B /* uploadViewController.swift in Sources */,
 				AEE870381B7BAD1E0072F399 /* registrationcontroller.swift in Sources */,
 				AED1A3841B40A16F00CCB553 /* FirstViewController.swift in Sources */,
