@@ -8,7 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		AE1E0D8D1B8EABE100AE587B /* uploadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1E0D8C1B8EABE100AE587B /* uploadViewController.swift */; };
-		AE31126C1B8398EA00DFC94F /* feedappearanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE31126B1B8398EA00DFC94F /* feedappearanceViewController.swift */; };
+		AE2989951B9629FF0054697D /* custompartycellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE2989941B9629FF0054697D /* custompartycellTableViewCell.swift */; };
+		AE29899B1B9631540054697D /* parseheader.m in Sources */ = {isa = PBXBuildFile; fileRef = AE29899A1B9631540054697D /* parseheader.m */; };
 		AE584B641B7C46BF006057B2 /* logincontrollerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE584B631B7C46BF006057B2 /* logincontrollerViewController.swift */; };
 		AE73BC8A1B7A7CB500AAC317 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE73BC881B7A7CB500AAC317 /* AudioToolbox.framework */; };
 		AE73BC951B7A7D1B00AAC317 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE73BC8C1B7A7D1B00AAC317 /* CFNetwork.framework */; };
@@ -51,7 +52,10 @@
 
 /* Begin PBXFileReference section */
 		AE1E0D8C1B8EABE100AE587B /* uploadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = uploadViewController.swift; path = ../uploadViewController.swift; sourceTree = "<group>"; };
-		AE31126B1B8398EA00DFC94F /* feedappearanceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = feedappearanceViewController.swift; path = ../feedappearanceViewController.swift; sourceTree = "<group>"; };
+		AE2989941B9629FF0054697D /* custompartycellTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = custompartycellTableViewCell.swift; sourceTree = "<group>"; };
+		AE2989981B96303F0054697D /* ParseHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ParseHeader.h; sourceTree = "<group>"; };
+		AE2989991B9631530054697D /* PARTY-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PARTY-Bridging-Header.h"; sourceTree = "<group>"; };
+		AE29899A1B9631540054697D /* parseheader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = parseheader.m; sourceTree = "<group>"; };
 		AE584B631B7C46BF006057B2 /* logincontrollerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = logincontrollerViewController.swift; sourceTree = "<group>"; };
 		AE73BC801B7A777800AAC317 /* parse-library-1.7.5 */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "parse-library-1.7.5"; path = "../../../Downloads/parse-library-1.7.5"; sourceTree = "<group>"; };
 		AE73BC881B7A7CB500AAC317 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
@@ -169,8 +173,8 @@
 		AED1A37E1B40A16F00CCB553 /* PARTY */ = {
 			isa = PBXGroup;
 			children = (
-				AE31126B1B8398EA00DFC94F /* feedappearanceViewController.swift */,
 				AEDF7A9C1B93DB9000C8D83A /* homefeedTableViewController.swift */,
+				AE2989941B9629FF0054697D /* custompartycellTableViewCell.swift */,
 				AE1E0D8C1B8EABE100AE587B /* uploadViewController.swift */,
 				AE8C3F5F1B7EF90400E83E18 /* profileViewController.swift */,
 				AE73EC0C1B7D94C300E4F45A /* homeViewController.swift */,
@@ -181,6 +185,8 @@
 				AE81E6791B7576A70082FAAF /* secondviewViewController.swift */,
 				AE81E67B1B757C830082FAAF /* Main.storyboard */,
 				AED1A37F1B40A16F00CCB553 /* Supporting Files */,
+				AE2989981B96303F0054697D /* ParseHeader.h */,
+				AE2989991B9631530054697D /* PARTY-Bridging-Header.h */,
 			);
 			path = PARTY;
 			sourceTree = "<group>";
@@ -189,6 +195,7 @@
 			isa = PBXGroup;
 			children = (
 				AED1A38A1B40A16F00CCB553 /* Images.xcassets */,
+				AE29899A1B9631540054697D /* parseheader.m */,
 				AED1A38C1B40A16F00CCB553 /* LaunchScreen.xib */,
 				AED1A3801B40A16F00CCB553 /* Info.plist */,
 			);
@@ -313,7 +320,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AE31126C1B8398EA00DFC94F /* feedappearanceViewController.swift in Sources */,
 				AE584B641B7C46BF006057B2 /* logincontrollerViewController.swift in Sources */,
 				AE73EC0D1B7D94C300E4F45A /* homeViewController.swift in Sources */,
 				AE8C3F601B7EF90400E83E18 /* profileViewController.swift in Sources */,
@@ -321,6 +327,8 @@
 				AED1A3821B40A16F00CCB553 /* AppDelegate.swift in Sources */,
 				AEDF7A9D1B93DB9000C8D83A /* homefeedTableViewController.swift in Sources */,
 				AE1E0D8D1B8EABE100AE587B /* uploadViewController.swift in Sources */,
+				AE29899B1B9631540054697D /* parseheader.m in Sources */,
+				AE2989951B9629FF0054697D /* custompartycellTableViewCell.swift in Sources */,
 				AEE870381B7BAD1E0072F399 /* registrationcontroller.swift in Sources */,
 				AED1A3841B40A16F00CCB553 /* FirstViewController.swift in Sources */,
 			);
@@ -472,7 +480,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "Versuvian.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "71c5623f-2cd7-46c3-9f2c-210cd4a0ff9d";
-				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "PARTY/PARTY-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				VALID_ARCHS = "armv8 arm64 armv7s armv7";
 				"VALID_ARCHS[sdk=*]" = "armv8 arm64 armv7s armv7";
@@ -497,7 +505,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "Versuvian.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "71c5623f-2cd7-46c3-9f2c-210cd4a0ff9d";
-				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "PARTY/PARTY-Bridging-Header.h";
 				VALID_ARCHS = "armv8 arm64 armv7s armv7";
 				"VALID_ARCHS[sdk=*]" = "arm64 armv7 armv7s";
 			};

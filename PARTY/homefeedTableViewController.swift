@@ -7,8 +7,31 @@
 //
 
 import UIKit
+import CoreLocation
+import Parse
 
-class homefeedTableViewController: UITableViewController {
+
+class homefeedTableViewController: PFQueryTableViewController, CLLocationManagerDelegate {
+
+    override init(style: UITableViewStyle, className: String!) {
+        super.init(style: style, className: "parties")
+    }
+    
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        
+        self.parseClassName = "parties"
+        self.textKey = "title"
+        self.pullToRefreshEnabled = true
+        self.objectsPerPage = 200
+    }
+    override func queryForTable() -> PFQuery {
+        
+        let partyquery = PFQuery(className: "parties")
+        partyquery.orderByAscending("title")
+        return partyquery
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
