@@ -12,7 +12,11 @@ import Parse
 
 
 class homefeedTableViewController: PFQueryTableViewController, CLLocationManagerDelegate {
-
+    
+    let location = CLLocationManager()
+    let currentlocation : CLLocationCoordinate2D?
+    
+    
     override init(style: UITableViewStyle, className: String!) {
         super.init(style: style, className: "parties")
     }
@@ -41,6 +45,20 @@ class homefeedTableViewController: PFQueryTableViewController, CLLocationManager
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        location.desiredAccuracy = 1000
+        location.requestWhenInUseAuthorization()
+        location.startUpdatingLocation()
+        
+        
+        
+    }
+    private func alert(message: String){
+    let alert = UIAlertController(title: "something went wrong", message: message, preferredStyle: UIAlertControllerStyle.Alert)
+    
+    
+    }
+    func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
+        alert("Cannot fetch your location please, try again later")
     }
 
     override func didReceiveMemoryWarning() {
