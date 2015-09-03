@@ -25,7 +25,7 @@ class searchTableViewController: UITableViewController, UISearchResultsUpdating 
         self.resultSearchController.searchResultsUpdater = self
         self.resultSearchController.dimsBackgroundDuringPresentation = false
         self.resultSearchController.searchBar.sizeToFit()
-        self.searchDisplayController.searchBar.barTintColor = [UIColor, whiteColor];
+      
         
         
         self.tableView.tableHeaderView = self.resultSearchController.searchBar
