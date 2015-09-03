@@ -33,5 +33,68 @@
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PARTY/search.swift"
+            timestampString = "462944781.056897"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "12"
+            endingLineNumber = "12"
+            landmarkName = "search"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PARTY.search.__deallocating_deinit"
+                  moduleName = "PARTY"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/reubenukah/Desktop/Versuvian/PARTY/PARTY/search.swift"
+                  timestampString = "462944781.127338"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "12">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PARTY.search.init (PARTY.search.Type)(nibName : Swift.Optional&lt;Swift.String&gt;, bundle : Swift.Optional&lt;ObjectiveC.NSBundle&gt;) -&gt; PARTY.search"
+                  moduleName = "PARTY"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/reubenukah/Desktop/Versuvian/PARTY/PARTY/search.swift"
+                  timestampString = "462944781.128127"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "57">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PARTY.search.init (PARTY.search.Type)(coder : ObjectiveC.NSCoder) -&gt; Swift.Optional&lt;PARTY.search&gt;"
+                  moduleName = "PARTY"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/reubenukah/Desktop/Versuvian/PARTY/PARTY/search.swift"
+                  timestampString = "462944781.128341"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "16">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

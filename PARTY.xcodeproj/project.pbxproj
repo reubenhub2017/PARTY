@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		AE1E0D8D1B8EABE100AE587B /* uploadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1E0D8C1B8EABE100AE587B /* uploadViewController.swift */; };
+		AE2740D51B97FAA500055DCB /* searchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE2740D41B97FAA500055DCB /* searchTableViewController.swift */; };
 		AE2989951B9629FF0054697D /* custompartycellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE2989941B9629FF0054697D /* custompartycellTableViewCell.swift */; };
 		AE29899B1B9631540054697D /* parseheader.m in Sources */ = {isa = PBXBuildFile; fileRef = AE29899A1B9631540054697D /* parseheader.m */; };
 		AE584B641B7C46BF006057B2 /* logincontrollerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE584B631B7C46BF006057B2 /* logincontrollerViewController.swift */; };
@@ -52,6 +53,7 @@
 
 /* Begin PBXFileReference section */
 		AE1E0D8C1B8EABE100AE587B /* uploadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = uploadViewController.swift; path = ../uploadViewController.swift; sourceTree = "<group>"; };
+		AE2740D41B97FAA500055DCB /* searchTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = searchTableViewController.swift; path = ../searchTableViewController.swift; sourceTree = "<group>"; };
 		AE2989941B9629FF0054697D /* custompartycellTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = custompartycellTableViewCell.swift; sourceTree = "<group>"; };
 		AE2989981B96303F0054697D /* ParseHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ParseHeader.h; sourceTree = "<group>"; };
 		AE2989991B9631530054697D /* PARTY-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PARTY-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -173,6 +175,7 @@
 		AED1A37E1B40A16F00CCB553 /* PARTY */ = {
 			isa = PBXGroup;
 			children = (
+				AE2740D41B97FAA500055DCB /* searchTableViewController.swift */,
 				AEDF7A9C1B93DB9000C8D83A /* homefeedTableViewController.swift */,
 				AE2989941B9629FF0054697D /* custompartycellTableViewCell.swift */,
 				AE1E0D8C1B8EABE100AE587B /* uploadViewController.swift */,
@@ -327,6 +330,7 @@
 				AED1A3821B40A16F00CCB553 /* AppDelegate.swift in Sources */,
 				AEDF7A9D1B93DB9000C8D83A /* homefeedTableViewController.swift in Sources */,
 				AE1E0D8D1B8EABE100AE587B /* uploadViewController.swift in Sources */,
+				AE2740D51B97FAA500055DCB /* searchTableViewController.swift in Sources */,
 				AE29899B1B9631540054697D /* parseheader.m in Sources */,
 				AE2989951B9629FF0054697D /* custompartycellTableViewCell.swift in Sources */,
 				AEE870381B7BAD1E0072F399 /* registrationcontroller.swift in Sources */,

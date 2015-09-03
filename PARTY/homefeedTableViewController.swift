@@ -14,7 +14,7 @@ import Parse
 class homefeedTableViewController: PFQueryTableViewController, CLLocationManagerDelegate {
     
     let location = CLLocationManager()
-    let currentlocation : CLLocationCoordinate2D?
+    var currentLocation : CLLocationCoordinate2D?
     
     
     override init(style: UITableViewStyle, className: String!) {
@@ -54,11 +54,12 @@ class homefeedTableViewController: PFQueryTableViewController, CLLocationManager
     }
     private func alert(message: String){
     let alert = UIAlertController(title: "something went wrong", message: message, preferredStyle: UIAlertControllerStyle.Alert)
-    
+        let action = UIAlertAction(title: "okay", style: UIAlertActionStyle.Default, handler: nil)
+        alert.addAction(action)
     
     }
-    func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
-        alert("Cannot fetch your location please, try again later")
+    func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
+        alert("Cannot fetch your location")
     }
 
     override func didReceiveMemoryWarning() {
