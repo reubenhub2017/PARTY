@@ -12,10 +12,10 @@ import Parse
 
 class logincontrollerViewController: UIViewController {
     //Built in function so that if the user presses the anywhere the keyboard will disappear
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        self.view.endEditing(true)
-        
-    }
+//     func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+//        self.view.endEditing(true)
+//        
+//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

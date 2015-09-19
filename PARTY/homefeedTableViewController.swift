@@ -13,12 +13,12 @@ import Parse
 
 class homefeedTableViewController: PFQueryTableViewController, CLLocationManagerDelegate {
     
-    let location = CLLocationManager()
+    let locationManager = CLLocationManager()
     var currentLocation : CLLocationCoordinate2D?
     
     
     override init(style: UITableViewStyle, className: String!) {
-        super.init(style: style, className: "parties")
+        super.init(style: style, className: className)
     }
     
     
@@ -26,112 +26,100 @@ class homefeedTableViewController: PFQueryTableViewController, CLLocationManager
         super.init(coder: aDecoder)
         
         self.parseClassName = "parties"
-        self.textKey = "title"
+        self.textKey = "partytitle"
         self.pullToRefreshEnabled = true
         self.objectsPerPage = 200
     }
-    override func queryForTable() -> PFQuery {
-        
-        let partyquery = PFQuery(className: "parties")
-        partyquery.orderByAscending("title")
-        return partyquery
+    
+    
+    func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
+        locationManager.stopUpdatingLocation()
+        if(locations.count == 0){
+            let location = locations[0] as! CLLocation
+            print(location.coordinate)
+            let currrentLocation = location.coordinate
+        } else {
+            print("Cannot fetch your location")
+        }
     }
-
+    
+    
+    override func queryForTable() -> PFQuery {
+        let query = PFQuery(className: "parties")
+        if let querylocation = currentLocation {
+            query.whereKey("location", nearGeoPoint: PFGeoPoint(latitude: querylocation.latitude, longitude: querylocation.longitude),withinMiles: 10)
+            query.limit = 200;
+            query.orderByDescending("createdAt")
+        }
+        else {
+            query.whereKey("location", nearGeoPoint: PFGeoPoint(latitude: 37.411822, longitude: -121.941125), withinMiles: 10)
+            query.limit = 200;
+            query.orderByDescending("createdAt")
+            print("no parties around")
+            
+        }
+        return query
+        
+    }
+    func locationManager(manager: CLLocationManager!, didFailWithError error: NSError!){
+        print("cannot fetch your location")
+        
+    }
+    //this is the function for getting the parties
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-        location.desiredAccuracy = 1000
-        location.requestWhenInUseAuthorization()
-        location.startUpdatingLocation()
-        
+        self.navigationController?.navigationBarHidden = false
+        self.locationManager.delegate = self
+        self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        self.locationManager.requestAlwaysAuthorization()
+        self.locationManager.startUpdatingLocation()
         
         
     }
-    private func alert(message: String){
-    let alert = UIAlertController(title: "something went wrong", message: message, preferredStyle: UIAlertControllerStyle.Alert)
-        let action = UIAlertAction(title: "okay", style: UIAlertActionStyle.Default, handler: nil)
-        alert.addAction(action)
     
+    override func viewDidAppear(animated: Bool) {
+        let isUserLoggedIn  = NSUserDefaults.standardUserDefaults().boolForKey("isUserLoggedIn");
+        
+        if(!isUserLoggedIn)
+        {
+            self.performSegueWithIdentifier("homesegue", sender: self);
+        }
+        
     }
-    func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
-        alert("Cannot fetch your location")
-    }
-
+    // Uncomment the following line to preserve selection between presentations
+    // self.clearsSelectionOnViewWillAppear = false
+    
+    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+    // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
     // MARK: - Table view data source
-
+    
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 1
+        return 0
     }
-
+    
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 1
+        return 0
     }
-
+    
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
-
+        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
+        
         // Configure the cell...
-
-        return cell
-    }
-    
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
+        
+        return cell as! UITableViewCell
+}
 
 }

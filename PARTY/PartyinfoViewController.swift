@@ -1,32 +1,36 @@
 //
-//  profileViewController.swift
+//  PartyinfoViewController.swift
 //  PARTY
 //
-//  Created by Reuben Ukah on 8/15/15.
+//  Created by Reuben Ukah on 9/7/15.
 //  Copyright © 2015 Versuvian. All rights reserved.
 //
 
 import UIKit
-import Parse
-import Bolts
 
-class profileViewController: UIViewController {
-
-    @IBAction func logoutpressed(sender: AnyObject) {
-        NSUserDefaults.standardUserDefaults().setBool(false, forKey: "isUserLoggedIn");
-        NSUserDefaults.standardUserDefaults().synchronize();
-        
-        PFUser.logOutInBackgroundWithBlock({(error: NSError?) -> Void in
-            self.performSegueWithIdentifier("homeview", sender: self)
-        })
-        
+class PartyinfoViewController: UIViewController {
     
+    let partyinfoSegueIdentifier = "cellpartysegue"
+    
+    @IBOutlet weak var testvalue: UILabel!
+
+    
+    var value = String()
+    
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        testvalue.text = value
+        
+        self.navigationController?.popToRootViewControllerAnimated(true)
     }
     
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
 
         // Do any additional setup after loading the view.
     }
@@ -35,6 +39,7 @@ class profileViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+   
     
     
 

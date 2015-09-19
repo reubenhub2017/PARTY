@@ -7,11 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		AE1E0D8D1B8EABE100AE587B /* uploadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1E0D8C1B8EABE100AE587B /* uploadViewController.swift */; };
-		AE2740D51B97FAA500055DCB /* searchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE2740D41B97FAA500055DCB /* searchTableViewController.swift */; };
-		AE2989951B9629FF0054697D /* custompartycellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE2989941B9629FF0054697D /* custompartycellTableViewCell.swift */; };
 		AE29899B1B9631540054697D /* parseheader.m in Sources */ = {isa = PBXBuildFile; fileRef = AE29899A1B9631540054697D /* parseheader.m */; };
-		AE31BC2C1B98BA7E00C36738 /* CircularImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE31BC2B1B98BA7E00C36738 /* CircularImageView.swift */; };
 		AE584B641B7C46BF006057B2 /* logincontrollerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE584B631B7C46BF006057B2 /* logincontrollerViewController.swift */; };
 		AE73BC8A1B7A7CB500AAC317 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE73BC881B7A7CB500AAC317 /* AudioToolbox.framework */; };
 		AE73BC951B7A7D1B00AAC317 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE73BC8C1B7A7D1B00AAC317 /* CFNetwork.framework */; };
@@ -30,9 +26,8 @@
 		AE73BCA91B7A815B00AAC317 /* ParseFacebookUtilsV4.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE73BCA31B7A815B00AAC317 /* ParseFacebookUtilsV4.framework */; };
 		AE73BCAA1B7A815B00AAC317 /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE73BCA41B7A815B00AAC317 /* ParseUI.framework */; };
 		AE73EC0D1B7D94C300E4F45A /* homeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE73EC0C1B7D94C300E4F45A /* homeViewController.swift */; };
-		AE81E67A1B7576A70082FAAF /* secondviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE81E6791B7576A70082FAAF /* secondviewViewController.swift */; };
+		AE767E891BAD005E00C3C825 /* newpartiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE767E881BAD005E00C3C825 /* newpartiesViewController.swift */; };
 		AE81E67D1B757C830082FAAF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE81E67B1B757C830082FAAF /* Main.storyboard */; };
-		AE8C3F601B7EF90400E83E18 /* profileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8C3F5F1B7EF90400E83E18 /* profileViewController.swift */; };
 		AED1A3821B40A16F00CCB553 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED1A3811B40A16F00CCB553 /* AppDelegate.swift */; };
 		AED1A3841B40A16F00CCB553 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED1A3831B40A16F00CCB553 /* FirstViewController.swift */; };
 		AED1A38B1B40A16F00CCB553 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AED1A38A1B40A16F00CCB553 /* Images.xcassets */; };
@@ -53,13 +48,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		AE1E0D8C1B8EABE100AE587B /* uploadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = uploadViewController.swift; path = ../uploadViewController.swift; sourceTree = "<group>"; };
-		AE2740D41B97FAA500055DCB /* searchTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = searchTableViewController.swift; path = ../searchTableViewController.swift; sourceTree = "<group>"; };
-		AE2989941B9629FF0054697D /* custompartycellTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = custompartycellTableViewCell.swift; sourceTree = "<group>"; };
 		AE2989981B96303F0054697D /* ParseHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ParseHeader.h; sourceTree = "<group>"; };
 		AE2989991B9631530054697D /* PARTY-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PARTY-Bridging-Header.h"; sourceTree = "<group>"; };
 		AE29899A1B9631540054697D /* parseheader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = parseheader.m; sourceTree = "<group>"; };
-		AE31BC2B1B98BA7E00C36738 /* CircularImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircularImageView.swift; sourceTree = "<group>"; };
 		AE584B631B7C46BF006057B2 /* logincontrollerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = logincontrollerViewController.swift; sourceTree = "<group>"; };
 		AE73BC801B7A777800AAC317 /* parse-library-1.7.5 */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "parse-library-1.7.5"; path = "../../../Downloads/parse-library-1.7.5"; sourceTree = "<group>"; };
 		AE73BC881B7A7CB500AAC317 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
@@ -80,9 +71,8 @@
 		AE73BCA31B7A815B00AAC317 /* ParseFacebookUtilsV4.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ParseFacebookUtilsV4.framework; path = "../../../Downloads/parse-library-1.7.5/ParseFacebookUtilsV4.framework"; sourceTree = "<group>"; };
 		AE73BCA41B7A815B00AAC317 /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ParseUI.framework; path = "../../../Downloads/parse-library-1.7.5/ParseUI.framework"; sourceTree = "<group>"; };
 		AE73EC0C1B7D94C300E4F45A /* homeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = homeViewController.swift; path = ../homeViewController.swift; sourceTree = "<group>"; };
-		AE81E6791B7576A70082FAAF /* secondviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = secondviewViewController.swift; sourceTree = "<group>"; };
+		AE767E881BAD005E00C3C825 /* newpartiesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = newpartiesViewController.swift; path = PARTY/newpartiesViewController.swift; sourceTree = "<group>"; };
 		AE81E67C1B757C830082FAAF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		AE8C3F5F1B7EF90400E83E18 /* profileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = profileViewController.swift; path = ../profileViewController.swift; sourceTree = "<group>"; };
 		AED1A37C1B40A16F00CCB553 /* PARTY.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PARTY.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AED1A3801B40A16F00CCB553 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AED1A3811B40A16F00CCB553 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -157,6 +147,7 @@
 		AED1A3731B40A16F00CCB553 = {
 			isa = PBXGroup;
 			children = (
+				AE767E881BAD005E00C3C825 /* newpartiesViewController.swift */,
 				AE73BC9E1B7A7FAB00AAC317 /* Frameworks */,
 				AE73BC801B7A777800AAC317 /* parse-library-1.7.5 */,
 				AED1A37E1B40A16F00CCB553 /* PARTY */,
@@ -177,19 +168,13 @@
 		AED1A37E1B40A16F00CCB553 /* PARTY */ = {
 			isa = PBXGroup;
 			children = (
-				AE2740D41B97FAA500055DCB /* searchTableViewController.swift */,
 				AEDF7A9C1B93DB9000C8D83A /* homefeedTableViewController.swift */,
-				AE2989941B9629FF0054697D /* custompartycellTableViewCell.swift */,
-				AE1E0D8C1B8EABE100AE587B /* uploadViewController.swift */,
-				AE8C3F5F1B7EF90400E83E18 /* profileViewController.swift */,
 				AE73EC0C1B7D94C300E4F45A /* homeViewController.swift */,
 				AE584B631B7C46BF006057B2 /* logincontrollerViewController.swift */,
 				AEE870371B7BAD1E0072F399 /* registrationcontroller.swift */,
 				AED1A3811B40A16F00CCB553 /* AppDelegate.swift */,
 				AED1A3831B40A16F00CCB553 /* FirstViewController.swift */,
-				AE81E6791B7576A70082FAAF /* secondviewViewController.swift */,
 				AE81E67B1B757C830082FAAF /* Main.storyboard */,
-				AE31BC2B1B98BA7E00C36738 /* CircularImageView.swift */,
 				AED1A37F1B40A16F00CCB553 /* Supporting Files */,
 				AE2989981B96303F0054697D /* ParseHeader.h */,
 				AE2989991B9631530054697D /* PARTY-Bridging-Header.h */,
@@ -328,16 +313,11 @@
 			files = (
 				AE584B641B7C46BF006057B2 /* logincontrollerViewController.swift in Sources */,
 				AE73EC0D1B7D94C300E4F45A /* homeViewController.swift in Sources */,
-				AE8C3F601B7EF90400E83E18 /* profileViewController.swift in Sources */,
-				AE81E67A1B7576A70082FAAF /* secondviewViewController.swift in Sources */,
 				AED1A3821B40A16F00CCB553 /* AppDelegate.swift in Sources */,
+				AE767E891BAD005E00C3C825 /* newpartiesViewController.swift in Sources */,
 				AEDF7A9D1B93DB9000C8D83A /* homefeedTableViewController.swift in Sources */,
-				AE1E0D8D1B8EABE100AE587B /* uploadViewController.swift in Sources */,
-				AE2740D51B97FAA500055DCB /* searchTableViewController.swift in Sources */,
 				AE29899B1B9631540054697D /* parseheader.m in Sources */,
-				AE2989951B9629FF0054697D /* custompartycellTableViewCell.swift in Sources */,
 				AEE870381B7BAD1E0072F399 /* registrationcontroller.swift in Sources */,
-				AE31BC2C1B98BA7E00C36738 /* CircularImageView.swift in Sources */,
 				AED1A3841B40A16F00CCB553 /* FirstViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

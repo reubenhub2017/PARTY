@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>CCC93271-C4C0-44B1-9EA9-6ACE50D4D4D1</string>
+	<key>IDESourceControlProjectName</key>
+	<string>PARTY</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>D9D3BBBC2F09EE4BC93D8156D5069A73F4561A5A</key>
+		<string>https://bitbucket.org/versuvianteam/party.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>PARTY.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>D9D3BBBC2F09EE4BC93D8156D5069A73F4561A5A</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://bitbucket.org/versuvianteam/party.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>D9D3BBBC2F09EE4BC93D8156D5069A73F4561A5A</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>D9D3BBBC2F09EE4BC93D8156D5069A73F4561A5A</string>
+			<key>IDESourceControlWCCName</key>
+			<string>PARTY</string>
+		</dict>
+	</array>
+</dict>
+</plist>

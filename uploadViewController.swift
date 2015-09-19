@@ -10,7 +10,7 @@ import UIKit
 import Parse
 import Foundation
 
-class uploadViewController:  UITableViewController {
+class uploadViewController:  UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +31,38 @@ class uploadViewController:  UITableViewController {
     
     @IBOutlet weak var addinfo: UITextView!
 
+    @IBOutlet weak var starttime: UITextField!
+    @IBOutlet weak var endtime: UITextField!
+    @IBOutlet weak var descriptionupload: UITextView!
+    
+    
+    
+//    @IBAction func finishpressed(sender: AnyObject) {
+//        
+//        
+//        var queryclass = PFObject(className: "parties")
+//        queryclass["title"] =
+//        queryclass["host"] =
+//        queryclass["location"] =
+//        queryclass["start_time"] =
+//        
+//            queryclass.saveInBackgroundWithBlock {
+//                (success: Bool, error: NSError?) -> Void in
+//                if(success){
+//                
+//                }
+//                
+//                else {
+//                    // There was a problem, check error.description
+//                }
+//    }
+    
+        //let user : PFUser = PFUser()
+        
+    
+    
+    
+   
     /*
     // MARK: - Navigation
 

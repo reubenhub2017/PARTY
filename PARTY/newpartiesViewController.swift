@@ -1,31 +1,42 @@
 //
-//  secondviewViewController.swift
+//  newpartiesViewController.swift
 //  PARTY
 //
-//  Created by Reuben Ukah on 8/7/15.
+//  Created by Reuben Ukah on 9/18/15.
 //  Copyright (c) 2015 Versuvian. All rights reserved.
 //
 
 import UIKit
+import Parse
+import Foundation
+import CoreLocation
 
-class secondviewViewController: UIViewController {
+class newpartiesViewController: UIViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-//        self.navigationController?.navigationBarHidden = false
-//        self.navigationItem.hidesBackButton = false
-//        self.navigationController?.hidesBarsWhenKeyboardAppears = true
-//        // Do any additional setup after loading the view.
-   
-    }
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
+    @IBAction func cancelpressed(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: nil)
         
-        
-
-        // Dispose of any resources that can be recreated.
     }
     
+    @IBOutlet weak var titleofparty: UITextField!
+    
+    @IBOutlet weak var descofparty: UITextView!
+    @IBOutlet weak var strtimeofparty: UITextField!
+    
+    
+    
+    @IBAction func finishpressed(sender: AnyObject) {
+    }
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        // Do any additional setup after loading the view.
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
     
 
     /*

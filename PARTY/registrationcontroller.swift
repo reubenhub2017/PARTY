@@ -11,11 +11,11 @@ import Foundation
 import Parse
 
 class registrationcontroller: UIViewController {
-    
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        self.view.endEditing(true)
-        
-    }
+//    
+//    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+//        self.view.endEditing(true)
+//        
+//    }
     @IBOutlet weak var emailuser: UITextField!
     
     @IBOutlet weak var passworduser: UITextField!
