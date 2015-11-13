@@ -26,13 +26,10 @@ class logincontrollerViewController: UIViewController {
         
         
         
-//        let isUserLoggedIn =
-//        NSUserDefaults.standardUserDefaults().boolForKey("isUserLoggedIn");
-//        
-//        if(!isUserLoggedIn)
-//        {
-//        self.performSegueWithIdentifier("loginview", sender: self)
-//        }
+        
+        
+        
+  
 
         // Do any additional setup after loading the view.
     }
@@ -75,8 +72,9 @@ class logincontrollerViewController: UIViewController {
                 
                 NSUserDefaults.standardUserDefaults().setBool(true, forKey: "isUserLoggedIn");
                 NSUserDefaults.standardUserDefaults().synchronize();
-                self.dismissViewControllerAnimated(true, completion: nil)
+                self.performSegueWithIdentifier("testsegue", sender: self)
                 
+             
                 
             }else {
             print("could not find user")

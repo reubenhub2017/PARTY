@@ -11,10 +11,17 @@ import CoreLocation
 import Parse
 
 
+
 class homefeedTableViewController: PFQueryTableViewController, CLLocationManagerDelegate {
-    
+        
     let locationManager = CLLocationManager()
     var currentLocation : CLLocationCoordinate2D?
+  
+    
+ 
+    
+var parties : NSMutableArray = NSMutableArray()
+    
     
     
     override init(style: UITableViewStyle, className: String!) {
@@ -25,44 +32,68 @@ class homefeedTableViewController: PFQueryTableViewController, CLLocationManager
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
-        self.parseClassName = "parties"
+        self.parseClassName = "Party"
         self.textKey = "partytitle"
         self.pullToRefreshEnabled = true
         self.objectsPerPage = 200
     }
     
     
-    func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
+    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         locationManager.stopUpdatingLocation()
-        if(locations.count == 0){
-            let location = locations[0] as! CLLocation
+        if(locations.count != 0){
+            let location = locations[0] as CLLocation
             print(location.coordinate)
-            let currrentLocation = location.coordinate
+            currentLocation = location.coordinate
         } else {
             print("Cannot fetch your location")
         }
     }
     
+
     
     override func queryForTable() -> PFQuery {
-        let query = PFQuery(className: "parties")
-        if let querylocation = currentLocation {
-            query.whereKey("location", nearGeoPoint: PFGeoPoint(latitude: querylocation.latitude, longitude: querylocation.longitude),withinMiles: 10)
-            query.limit = 200;
-            query.orderByDescending("createdAt")
-        }
-        else {
-            query.whereKey("location", nearGeoPoint: PFGeoPoint(latitude: 37.411822, longitude: -121.941125), withinMiles: 10)
-            query.limit = 200;
-            query.orderByDescending("createdAt")
-            print("no parties around")
-            
-        }
-        return query
+    //current users followers 
+        
+    let queryforfollowingfriends = PFQuery(className: "Follow")
+        queryforfollowingfriends.whereKey("from", equalTo:PFUser.currentUser()!)
+        queryforfollowingfriends.whereKey("Type", equalTo: "Follow")
+        
+        //current party that friends of the user followers
+    let queryforfriends = PFQuery(className: "parties")
+        queryforfriends.whereKey("partyhost", matchesKey: "to", inQuery: queryforfollowingfriends)
+        queryforfriends.whereKeyExists("objectId")
+        
+        //current user photeos
+    let currentuserphotos = PFQuery(className: "parties")
+        currentuserphotos.whereKey("partyhost", equalTo: PFUser.currentUser()!)
+         currentuserphotos.whereKeyExists("objectId")
+        
+        let results = PFQuery.orQueryWithSubqueries([queryforfriends,currentuserphotos])
+        results.includeKey("objectId")
+        results.orderByAscending("createdAt")
+        
+        
+      
+        return results
+    
+        
+        
+        
         
     }
-    func locationManager(manager: CLLocationManager!, didFailWithError error: NSError!){
-        print("cannot fetch your location")
+        
+        
+
+
+      
+        
+
+        
+    
+    
+    func locationManager(manager: CLLocationManager, didFailWithError error: NSError){
+      print(error)
         
     }
     //this is the function for getting the parties
@@ -72,10 +103,23 @@ class homefeedTableViewController: PFQueryTableViewController, CLLocationManager
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBarHidden = false
-        self.locationManager.delegate = self
-        self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        self.locationManager.requestAlwaysAuthorization()
+        self.locationManager.desiredAccuracy = 1000
+        locationManager.delegate = self
+        self.locationManager.requestWhenInUseAuthorization()
         self.locationManager.startUpdatingLocation()
+          self.navigationItem.title = "PARTY"
+        
+        
+        let isUserLoggedIn  = NSUserDefaults.standardUserDefaults().boolForKey("isUserLoggedIn");
+        
+        if(!isUserLoggedIn)
+        {
+            dispatch_async(dispatch_get_main_queue()){
+                self.performSegueWithIdentifier("homeview", sender: self);
+            }
+        }
+        
+        
         
         
     }
@@ -85,10 +129,14 @@ class homefeedTableViewController: PFQueryTableViewController, CLLocationManager
         
         if(!isUserLoggedIn)
         {
-            self.performSegueWithIdentifier("homesegue", sender: self);
+            dispatch_async(dispatch_get_main_queue()){
+            self.performSegueWithIdentifier("homeview", sender: self);
+            }
         }
         
+
     }
+    
     // Uncomment the following line to preserve selection between presentations
     // self.clearsSelectionOnViewWillAppear = false
     
@@ -105,21 +153,132 @@ class homefeedTableViewController: PFQueryTableViewController, CLLocationManager
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return objects!.count
     }
     
+    override func objectAtIndexPath(indexPath: NSIndexPath!) -> PFObject? {
+    var obj : PFObject? = nil
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
+        if(indexPath.row < self.objects!.count){
+            obj = self.objects![indexPath.row] as? PFObject
+    }
+    
+        return obj
+    }
+
+    
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath, object: PFObject!) -> PFTableViewCell
+        {
+        let cell : customTableViewCell = tableView.dequeueReusableCellWithIdentifier("Cell") as! customTableViewCell
+       
+      //  let partyobjects: PFObject = self.parties.objectAtIndex(indexPath.row) as! PFObject
+            
+        cell.partytitle.alpha = 0
+        cell.profcellimage.alpha = 0
+        cell.celldesc.alpha = 0
+        cell.partycellusername.alpha = 0
+        cell.profcellimage.alpha = 0
+        cell.time.alpha = 0
         
-        // Configure the cell...
+            
+            
+//        cell.celldesc.sizeToFit()
+      
+//        cell.celldesc.textAlignment = NSTextAlignment.Left
+            
+            UIView.animateWithDuration(0.5, animations: {
+             cell.partytitle.alpha = 1
+                cell.profcellimage.alpha = 1
+                cell.celldesc.alpha = 1
+                cell.partycellusername.alpha = 1
+                cell.profcellimage.alpha = 1
+                cell.time.alpha = 1
+            
+            })
         
-        return cell as! UITableViewCell
-}
+        cell.partytitle.text = object!.objectForKey("title") as? String
+        
+        cell.celldesc.text = object!.objectForKey("description") as? String
+        
+        
+        cell.partycellusername.text = object!.objectForKey("username") as? String
+        
+            let time = object!.createdAt
+            let dateFormatter : NSDateFormatter = NSDateFormatter()
+            dateFormatter.dateFormat = "mm"
+           
+            
+            cell.time.text = dateFormatter.stringFromDate(object.createdAt!) 
+            
+            
+        
+
+        
+            //profile image
+            let findpict:PFQuery = PFUser.query()!
+            //let parta : PFObject = self.parties.objectAtIndex(indexPath.row) as! PFObject
+            
+            findpict.whereKey("objectId", equalTo: (object.objectForKey("partyhost")!.objectId)!!)
+          
+            findpict.findObjectsInBackgroundWithBlock {
+                (objects:[AnyObject]?, error: NSError?) -> Void in
+                if (error == nil) {
+                    let user: PFUser = (objects! as NSArray).lastObject as! PFUser
+                    
+            let profileimage :PFFile = user["profileimage"] as! PFFile
+            profileimage.getDataInBackgroundWithBlock { (imageData: NSData?, error: NSError?) -> Void in
+                if (error == nil) {
+                    let image: UIImage = UIImage(data: imageData!)!
+                    cell.profcellimage.image = image
+                }else {
+                print(error)
+                
+                }
+            }
+                }
+
+    
+            }
+      
+            cell.profcellimage.layer.cornerRadius = cell.profcellimage.frame.size.width/2
+            cell.profcellimage.clipsToBounds = true
+            cell.profcellimage.layer.masksToBounds = true
+            
+            cell.profcellimage.layer.borderColor = UIColor.blackColor().CGColor
+            cell.profcellimage.layer.borderWidth = 1.0
+        
+        
+        
+        
+        
+        
+        
+        
+        return cell
+    }
+
+    
+
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        if(segue.identifier == "partyDetail"){
+                    let indexPath = self.tableView.indexPathForSelectedRow!
+                    let obj = self.objects![indexPath.row] as! PFObject
+                    let navVC = segue.destinationViewController as! UINavigationController
+                    let detailVC = navVC.topViewController as! DetailViewViewController
+                    detailVC.party = obj
+            
+                    
+                
+        
+        }
+    }
+    
 
 }

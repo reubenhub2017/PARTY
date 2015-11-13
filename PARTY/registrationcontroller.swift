@@ -86,7 +86,13 @@ class registrationcontroller: UIViewController {
         user.signUpInBackgroundWithBlock {(succeeded, error: NSError?) -> Void in
         if(error == nil){
         //Great you signed in !
-            self.performSegueWithIdentifier("homeview", sender: self)
+            NSUserDefaults.standardUserDefaults().setBool(true, forKey: "isUserLoggedIn");
+            NSUserDefaults.standardUserDefaults().synchronize();
+            self.dismissViewControllerAnimated(true, completion: nil)
+            //self.performSegueWithIdentifier("slidesegue", sender: self)
+            
+        
+           
         }
     
     }

@@ -11,18 +11,30 @@ import Parse
 import Bolts
 
 class homeViewController: UITabBarController {
-
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return UIStatusBarStyle.LightContent
+    }
   
     override func viewDidLoad() {
         super.viewDidLoad()
         //background of the Tab bar
-        UITabBar.appearance().barTintColor = UIColor(red: 0.6, green: 0.1, blue: 0.1, alpha: 1)
+        UITabBar.appearance().barTintColor = UIColor.whiteColor()
         //background of the Tab bar item 
-        UITabBar.appearance().tintColor = UIColor.whiteColor()
+        UITabBar.appearance().tintColor = UIColor.redColor()
         //we need the white item color
         
+        
+        
+        let user = PFUser()
+        
+        
+        if !user.isAuthenticated() {
+        self.performSegueWithIdentifier("homeview", sender: self);
+        
+        }
+        
+    
 
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
@@ -34,11 +46,13 @@ class homeViewController: UITabBarController {
         
         let isUserLoggedIn  = NSUserDefaults.standardUserDefaults().boolForKey("isUserLoggedIn");
         
+        
         if(!isUserLoggedIn)
         {
-            self.performSegueWithIdentifier("homeview", sender: self);
+            
+                self.performSegueWithIdentifier("homeview", sender: self);
+            
         }
-        
         
         
        

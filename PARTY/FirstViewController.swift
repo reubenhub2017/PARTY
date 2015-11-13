@@ -10,34 +10,38 @@ import UIKit
 import Foundation
 import Parse
 
-class FirstViewController: UIViewController {
-   
+class FirstViewController: UIViewController  {
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.hidden = true
-        // Do any additional setup after loading the view, typically from a nib.
-     
         
-       
+        let isUserLoggedIn  = NSUserDefaults.standardUserDefaults().boolForKey("isUserLoggedIn");
+        
+        
+        if(isUserLoggedIn)
+        {
+            self.performSegueWithIdentifier("backtohome", sender: self)
+            
+            
         }
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-        self.navigationController?.navigationBar.hidden = true
-    }
-    
         
         
-       
-    
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-       
-       
-    }
-
-
 }
-
+//    override func viewWillAppear(animated: Bool) {
+//        super.viewWillAppear(animated)
+//        self.navigationController?.navigationBar.hidden = true
+//        
+//        let isUserLoggedIn  = NSUserDefaults.standardUserDefaults().boolForKey("isUserLoggedIn");
+//        
+//        
+//        if(isUserLoggedIn)
+//        {
+//            
+//           self.performSegueWithIdentifier("backtohome", sender: self)
+//            
+//        }
+//    }
+    
+    
+}

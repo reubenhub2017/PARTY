@@ -1,0 +1,7 @@
+platform :ios, '8.0'
+
+xcodeproj 'party.xcodeproj'
+
+target 'Party' do
+  pod 'AFNetworking', '~> 2.5' 
+end
