@@ -45,6 +45,8 @@
 		AED1A38B1B40A16F00CCB553 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AED1A38A1B40A16F00CCB553 /* Images.xcassets */; };
 		AED1A38E1B40A16F00CCB553 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = AED1A38C1B40A16F00CCB553 /* LaunchScreen.xib */; };
 		AED1A39A1B40A16F00CCB553 /* PARTYTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED1A3991B40A16F00CCB553 /* PARTYTests.swift */; };
+		AEDC8D321BF69E69003CDB2A /* UserlocationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEDC8D311BF69E69003CDB2A /* UserlocationTableViewController.swift */; };
+		AEDC8D341BF6BE3C003CDB2A /* currentlocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEDC8D331BF6BE3C003CDB2A /* currentlocation.swift */; };
 		AEDF7A9D1B93DB9000C8D83A /* homefeedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEDF7A9C1B93DB9000C8D83A /* homefeedTableViewController.swift */; };
 		AEE47C531BDECDC900C00C28 /* searchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE47C521BDECDC900C00C28 /* searchTableViewController.swift */; };
 		AEE870381B7BAD1E0072F399 /* registrationcontroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE870371B7BAD1E0072F399 /* registrationcontroller.swift */; };
@@ -107,6 +109,8 @@
 		AED1A3931B40A16F00CCB553 /* PARTYTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PARTYTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AED1A3981B40A16F00CCB553 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AED1A3991B40A16F00CCB553 /* PARTYTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PARTYTests.swift; sourceTree = "<group>"; };
+		AEDC8D311BF69E69003CDB2A /* UserlocationTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserlocationTableViewController.swift; sourceTree = "<group>"; };
+		AEDC8D331BF6BE3C003CDB2A /* currentlocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = currentlocation.swift; path = ../currentlocation.swift; sourceTree = "<group>"; };
 		AEDF7A9C1B93DB9000C8D83A /* homefeedTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = homefeedTableViewController.swift; sourceTree = "<group>"; };
 		AEE47C521BDECDC900C00C28 /* searchTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = searchTableViewController.swift; sourceTree = "<group>"; };
 		AEE870371B7BAD1E0072F399 /* registrationcontroller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = registrationcontroller.swift; sourceTree = "<group>"; };
@@ -196,7 +200,9 @@
 		AED1A37E1B40A16F00CCB553 /* PARTY */ = {
 			isa = PBXGroup;
 			children = (
+				AEDC8D331BF6BE3C003CDB2A /* currentlocation.swift */,
 				AEDF7A9C1B93DB9000C8D83A /* homefeedTableViewController.swift */,
+				AEDC8D311BF69E69003CDB2A /* UserlocationTableViewController.swift */,
 				AE4C7E321BE5319D0049ED10 /* friendsTableViewController.swift */,
 				AE8660231BBC8F220088BC21 /* customTableViewCell.swift */,
 				AE73EC0C1B7D94C300E4F45A /* homeViewController.swift */,
@@ -366,11 +372,13 @@
 				AE377AED1BC2084900BD40CD /* settingprofileTableView.swift in Sources */,
 				AE4C7E331BE5319D0049ED10 /* friendsTableViewController.swift in Sources */,
 				AE73EC0D1B7D94C300E4F45A /* homeViewController.swift in Sources */,
+				AEDC8D321BF69E69003CDB2A /* UserlocationTableViewController.swift in Sources */,
 				AED1A3821B40A16F00CCB553 /* AppDelegate.swift in Sources */,
 				AE767E891BAD005E00C3C825 /* newpartiesViewController.swift in Sources */,
 				AE76A69B1BDA8D8C009C4555 /* slideViewController.swift in Sources */,
 				AEED88991BBF8A8C00CFFA9A /* profileTableViewController.swift in Sources */,
 				AEDF7A9D1B93DB9000C8D83A /* homefeedTableViewController.swift in Sources */,
+				AEDC8D341BF6BE3C003CDB2A /* currentlocation.swift in Sources */,
 				AEE47C531BDECDC900C00C28 /* searchTableViewController.swift in Sources */,
 				AE3E84181BCCB14400AC5D3C /* ContentViewController.swift in Sources */,
 				AE29899B1B9631540054697D /* parseheader.m in Sources */,

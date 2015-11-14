@@ -14,6 +14,7 @@ class customTableViewCell: PFTableViewCell {
     @IBOutlet weak var partytitle: UILabel!
     @IBOutlet weak var partycelldescription: UILabel!
     @IBOutlet weak var partycellusername: UILabel!
+    @IBOutlet weak var attendeespic: UIImageView!
     @IBOutlet weak var time: UILabel!
     
     @IBOutlet weak var followlabel: UIButton!

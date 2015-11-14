@@ -16,11 +16,26 @@ class searchTableViewController: UITableViewController, UISearchBarDelegate, UIS
     var userfollowbutton: PFObject!
     var unuserfollowbutton : PFObject!
     var button: customTableViewCell = customTableViewCell()
+    let locationManager = CLLocationManager()
+    var currentLocation : CLLocationCoordinate2D?
  
  
     
     
-
+    
+    
+    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        locationManager.stopUpdatingLocation()
+        if(locations.count != 0){
+            let location = locations[0] as CLLocation
+            print(location.coordinate)
+            currentLocation = location.coordinate
+        } else {
+            print("Cannot fetch your location")
+        }
+    }
+    
+    
     
     
     

@@ -16,7 +16,7 @@ class newpartiesViewController: UIViewController, UIImagePickerControllerDelegat
 CLLocationManagerDelegate {
     
     @IBOutlet weak var newpartyuserimage: UIImageView!
-
+    
     let locationManager = CLLocationManager()
     var currentLocation : CLLocationCoordinate2D?
     
@@ -32,18 +32,18 @@ CLLocationManagerDelegate {
     @IBOutlet weak var descofparty: UITextView!
     @IBOutlet weak var strtimeofparty: UITextField!
     
-  
+    
     @IBOutlet weak var ImagePreview: UIImageView!
     
     @IBAction func imageupload(sender: AnyObject) {
-    
         
-    let imagePicker = UIImagePickerController()
-    imagePicker.delegate = self
-    imagePicker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
-    imagePicker.allowsEditing = false
-    self.presentViewController(imagePicker, animated: true, completion: nil)
-    
+        
+        let imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        imagePicker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
+        imagePicker.allowsEditing = false
+        self.presentViewController(imagePicker, animated: true, completion: nil)
+        
         
         
         
@@ -54,7 +54,7 @@ CLLocationManagerDelegate {
         
         
     }
-   
+    
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         locationManager.stopUpdatingLocation()
         if(locations.count != 0){
@@ -67,7 +67,7 @@ CLLocationManagerDelegate {
     }
     @IBAction func finishpressed(sender: AnyObject) {
         let post = PFObject(className: "parties")
-         let userhost = PFObject(className: "User")
+        let userhost = PFObject(className: "User")
         //we are going to post the data to Parse : Classname Parties
         
         post["title"] = titleofparty.text
@@ -78,70 +78,72 @@ CLLocationManagerDelegate {
         post["location"] = PFGeoPoint(latitude: currentLocation!.latitude, longitude: currentLocation!.longitude)
         userhost.incrementKey("hostednumber")
         
-     
+        
         post.saveInBackground()
         userhost.saveInBackground()
         
         
-       
+        
         
         userhost.incrementKey("hostednumber")
         
         
         self.dismissViewControllerAnimated(true, completion: nil)
-    
+        
         
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-override func viewDidLoad() {
-    super.viewDidLoad()
-            self.locationManager.delegate = self
-            self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
-            self.locationManager.requestWhenInUseAuthorization()
-            self.locationManager.requestAlwaysAuthorization()
-            self.locationManager.startUpdatingLocation()
-    
-            newpartyuserimage.layer.cornerRadius = newpartyuserimage.layer.frame.size.width/2
-            newpartyuserimage.clipsToBounds = true
-            newpartyuserimage.layer.masksToBounds = true
-    
-            newpartyuserimage.layer.borderColor = UIColor.blackColor().CGColor
-            newpartyuserimage.layer.borderWidth = 1.0
-    
-    
-    if let userPicture = PFUser.currentUser()!["profileimage"] as? PFFile {
-        userPicture.getDataInBackgroundWithBlock { (imageData: NSData?, error: NSError?) -> Void in
-            if (error == nil) {
-                self.newpartyuserimage.image = UIImage(data:imageData!)
-                
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.locationManager.delegate = self
+        self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        self.locationManager.requestWhenInUseAuthorization()
+        self.locationManager.requestAlwaysAuthorization()
+        self.locationManager.startUpdatingLocation()
+        
+        newpartyuserimage.layer.cornerRadius = newpartyuserimage.layer.frame.size.width/2
+        newpartyuserimage.clipsToBounds = true
+        newpartyuserimage.layer.masksToBounds = true
+        
+        newpartyuserimage.layer.borderColor = UIColor.blackColor().CGColor
+        newpartyuserimage.layer.borderWidth = 1.0
+        
+        
+        if let userPicture = PFUser.currentUser()!["profileimage"] as? PFFile {
+            userPicture.getDataInBackgroundWithBlock { (imageData: NSData?, error: NSError?) -> Void in
+                if (error == nil) {
+                    self.newpartyuserimage.image = UIImage(data:imageData!)
+                    
+                }
             }
+            
         }
-    
+        
+        
+        
+        
+        
+        
+        
+        
+        
     }
-   
     
-
-
-    
-
-    
-    
-    
-    }
-
     /*
     // MARK: - Navigation
-
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    // Get the new view controller using segue.destinationViewController.
+    // Pass the selected object to the new view controller.
     }
     */
+    
+    
 
 
 }

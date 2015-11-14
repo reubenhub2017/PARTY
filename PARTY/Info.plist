@@ -26,6 +26,8 @@
 	<string></string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>We are going to use your phone to locate Parties cool right ?</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string></string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>location</string>

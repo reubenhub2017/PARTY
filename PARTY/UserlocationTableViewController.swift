@@ -1,57 +1,61 @@
 //
-//  attendeesTableViewController.swift
+//  UserlocationTableViewController.swift
 //  PARTY
 //
-//  Created by Reuben Ukah on 11/1/15.
+//  Created by Reuben Ukah on 11/13/15.
 //  Copyright © 2015 Versuvian. All rights reserved.
 //
 
 import UIKit
 
-class attendeesTableViewController: PFQueryTableViewController {
-
-     var user2: PFUser!
-    override init(style: UITableViewStyle, className: String!) {
-        super.init(style: style, className: className)
-    }
+class UserlocationTableViewController: PFQueryTableViewController, CLLocationManagerDelegate {
     
-
+    let locationManager = CLLocationManager()
+    var parties : NSMutableArray = NSMutableArray()
+    var currentLocation : CLLocationCoordinate2D?
     
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        
-        self.parseClassName = "Activity"
-        self.textKey = "partytitle"
-        self.pullToRefreshEnabled = true
-        self.objectsPerPage = 200
+    
+    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        locationManager.stopUpdatingLocation()
+        if(locations.count != 0){
+            let location = locations[0] as CLLocation
+            print(location.coordinate)
+            currentLocation = location.coordinate
+        } else {
+            print("Cannot fetch your location")
+        }
     }
+
+
     override func queryForTable() -> PFQuery {
+        //current users followers
         
-        let searchforuser = PFQuery(className: "Activity")
-        searchforuser.whereKey("user", notEqualTo: PFUser.currentUser()!)
-        searchforuser.includeKey("user")
+      
+        let query = PFQuery(className: "parties")
+        if let current = currentLocation {
+            query.whereKey("location", nearGeoPoint: PFGeoPoint(latitude: current.latitude, longitude: current.longitude), withinMiles: 10)
         
         
-        let searchforpary = PFQuery(className: "parties")
-        searchforpary.whereKey("objectId", matchesKey: "Goingto", inQuery: searchforuser)
-            
-       
         
-        return searchforuser
         
+        }
+        return query
     }
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.navigationBarHidden = false
+        self.locationManager.desiredAccuracy = 1000
+        locationManager.delegate = self
+        self.locationManager.requestWhenInUseAuthorization()
+        self.locationManager.startUpdatingLocation()
+        self.navigationItem.title = "PARTY"
+       
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-        
-        
     }
 
     override func didReceiveMemoryWarning() {
@@ -72,22 +76,25 @@ class attendeesTableViewController: PFQueryTableViewController {
     }
 
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath, object: PFObject!) -> PFTableViewCell
-    {
-        let cell : customTableViewCell = tableView.dequeueReusableCellWithIdentifier("Cell") as! customTableViewCell
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath, object: PFObject!) -> PFTableViewCell {
         
-     
-       
-        let userstring =  object.objectForKey("user") as? PFUser
-        let username = userstring
-        cell.sentence.text = username!.username!  + " is going to your party"
-       
+        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! customTableViewCell
         
+ 
+        
+        cell.partytitle.text = object!.objectForKey("title") as? String
+        
+        cell.celldesc.text = object!.objectForKey("description") as? String
+        
+        
+        cell.partycellusername.text = object!.objectForKey("username") as? String
+        
+                
         //profile image
         let findpict:PFQuery = PFUser.query()!
-        //let parta : PFObject = self.parties.objectAtIndex(indexPath.row) as! PFObject
         
-        findpict.whereKey("objectId", equalTo: (object.objectForKey("user")?.objectId)!)
+        
+        findpict.whereKey("objectId", equalTo: (object.objectForKey("partyhost")!.objectId)!!)
         
         findpict.findObjectsInBackgroundWithBlock {
             (objects:[AnyObject]?, error: NSError?) -> Void in
@@ -98,22 +105,44 @@ class attendeesTableViewController: PFQueryTableViewController {
                 profileimage.getDataInBackgroundWithBlock { (imageData: NSData?, error: NSError?) -> Void in
                     if (error == nil) {
                         let image: UIImage = UIImage(data: imageData!)!
-                        cell.attendeespic.image = image
+                        cell.profcellimage.image = image
                     }else {
                         print(error)
                         
                     }
                 }
             }
+            
+            
         }
-        return cell
-    }
-  
+        
+        cell.profcellimage.layer.cornerRadius = cell.profcellimage.frame.size.width/2
+        cell.profcellimage.clipsToBounds = true
+        cell.profcellimage.layer.masksToBounds = true
+        
+        cell.profcellimage.layer.borderColor = UIColor.blackColor().CGColor
+        cell.profcellimage.layer.borderWidth = 1.0
+
+        
 
         // Configure the cell...
 
-
+        return cell
+    }
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        if(segue.identifier == "partyDetail"){
+            let indexPath = self.tableView.indexPathForSelectedRow!
+            let obj = self.objects![indexPath.row] as! PFObject
+            let navVC = segue.destinationViewController as! UINavigationController
+            let detailVC = navVC.topViewController as! DetailViewViewController
+            detailVC.party = obj
             
+            
+            
+            
+        }
+    }
     
 
     /*
@@ -136,28 +165,12 @@ class attendeesTableViewController: PFQueryTableViewController {
     }
     */
 
-    
+    /*
     // Override to support rearranging the table view.
-//    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-//        
-//        
-//        let searchforparty = PFQuery(className: "parties")
-//        searchforparty.whereKey("partyhost", equalTo: (PFUser.currentUser()?.objectId)!)
-//        searchforparty.includeKey("objectId")
-//        
-//        let searchforpeople = PFQuery(className: "Activity")
-//        searchforpeople.whereKey("Goingto", matchesKey: "objectId", inQuery: searchforpeople)
-//        
-//        
-//        
-//    
-//    
-//    
-//    
-//    
-//    
-//    }
-    
+    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
+
+    }
+    */
 
     /*
     // Override to support conditional rearranging of the table view.

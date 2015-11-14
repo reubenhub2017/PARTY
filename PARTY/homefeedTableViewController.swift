@@ -16,12 +16,16 @@ class homefeedTableViewController: PFQueryTableViewController, CLLocationManager
         
     let locationManager = CLLocationManager()
     var currentLocation : CLLocationCoordinate2D?
+    
+    @IBOutlet weak var switchstates: UISegmentedControl!
   
+    @IBOutlet weak var nopartiesview: UIView!
+
     
  
     
 var parties : NSMutableArray = NSMutableArray()
-    
+   
     
     
     override init(style: UITableViewStyle, className: String!) {
@@ -50,6 +54,9 @@ var parties : NSMutableArray = NSMutableArray()
         }
     }
     
+   
+
+    
 
     
     override func queryForTable() -> PFQuery {
@@ -72,25 +79,16 @@ var parties : NSMutableArray = NSMutableArray()
         let results = PFQuery.orQueryWithSubqueries([queryforfriends,currentuserphotos])
         results.includeKey("objectId")
         results.orderByAscending("createdAt")
-        
-        
-      
-        return results
     
-        
-        
-        
+    
+      return results
+      
         
     }
-        
-        
+  
 
 
-      
-        
 
-        
-    
     
     func locationManager(manager: CLLocationManager, didFailWithError error: NSError){
       print(error)
@@ -108,6 +106,7 @@ var parties : NSMutableArray = NSMutableArray()
         self.locationManager.requestWhenInUseAuthorization()
         self.locationManager.startUpdatingLocation()
           self.navigationItem.title = "PARTY"
+        self.nopartiesview.hidden = false
         
         
         let isUserLoggedIn  = NSUserDefaults.standardUserDefaults().boolForKey("isUserLoggedIn");
@@ -118,9 +117,7 @@ var parties : NSMutableArray = NSMutableArray()
                 self.performSegueWithIdentifier("homeview", sender: self);
             }
         }
-        
-        
-        
+ 
         
     }
     
@@ -158,6 +155,15 @@ var parties : NSMutableArray = NSMutableArray()
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
+        if objects!.count == 0 {
+        nopartiesview.hidden = false
+        
+        }else {
+        nopartiesview.hidden = true
+        
+        }
+        
+        
         return objects!.count
     }
     
@@ -176,7 +182,6 @@ var parties : NSMutableArray = NSMutableArray()
         {
         let cell : customTableViewCell = tableView.dequeueReusableCellWithIdentifier("Cell") as! customTableViewCell
        
-      //  let partyobjects: PFObject = self.parties.objectAtIndex(indexPath.row) as! PFObject
             
         cell.partytitle.alpha = 0
         cell.profcellimage.alpha = 0
@@ -185,12 +190,6 @@ var parties : NSMutableArray = NSMutableArray()
         cell.profcellimage.alpha = 0
         cell.time.alpha = 0
         
-            
-            
-//        cell.celldesc.sizeToFit()
-      
-//        cell.celldesc.textAlignment = NSTextAlignment.Left
-            
             UIView.animateWithDuration(0.5, animations: {
              cell.partytitle.alpha = 1
                 cell.profcellimage.alpha = 1
@@ -214,10 +213,7 @@ var parties : NSMutableArray = NSMutableArray()
            
             
             cell.time.text = dateFormatter.stringFromDate(object.createdAt!) 
-            
-            
         
-
         
             //profile image
             let findpict:PFQuery = PFUser.query()!
@@ -240,10 +236,10 @@ var parties : NSMutableArray = NSMutableArray()
                 
                 }
             }
-                }
+        }
 
     
-            }
+    }
       
             cell.profcellimage.layer.cornerRadius = cell.profcellimage.frame.size.width/2
             cell.profcellimage.clipsToBounds = true
@@ -252,17 +248,8 @@ var parties : NSMutableArray = NSMutableArray()
             cell.profcellimage.layer.borderColor = UIColor.blackColor().CGColor
             cell.profcellimage.layer.borderWidth = 1.0
         
-        
-        
-        
-        
-        
-        
-        
         return cell
     }
-
-    
 
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
