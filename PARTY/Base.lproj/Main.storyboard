@@ -516,7 +516,7 @@
                                             <rect key="frame" x="525" y="22" width="60" height="30"/>
                                             <state key="normal" title="Unfollow"/>
                                             <connections>
-                                                <action selector="unfollowbtnpressed:" destination="hub-Oi-Dld" eventType="touchUpInside" id="4xT-7S-Naa"/>
+                                                <action selector="deletefriend:" destination="Iqw-h7-Kbb" eventType="touchUpInside" id="dz6-DN-wvE"/>
                                             </connections>
                                         </button>
                                     </subviews>
@@ -545,7 +545,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0dj-x5-YLy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="10390" y="2054"/>
+            <point key="canvasLocation" x="10901" y="1935"/>
         </scene>
         <!--Usernameemailpasswordchange Table View Controller-->
         <scene sceneID="j9x-4f-gVX">
@@ -1430,7 +1430,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6gt-30-vQq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4929" y="1674"/>
+            <point key="canvasLocation" x="4879" y="1798"/>
         </scene>
         <!--Tickets-->
         <scene sceneID="WbV-yG-HFC">

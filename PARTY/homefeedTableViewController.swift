@@ -207,12 +207,15 @@ var parties : NSMutableArray = NSMutableArray()
         
         cell.partycellusername.text = object!.objectForKey("username") as? String
         
+            let newtime = NSDate()
+            
             let time = object!.createdAt
-            let dateFormatter : NSDateFormatter = NSDateFormatter()
-            dateFormatter.dateFormat = "mm"
+            let time2 = time!.minutesFrom(time!)
+            
+            let finaltime = newtime.offsetFrom(time!)
            
             
-            cell.time.text = dateFormatter.stringFromDate(object.createdAt!) 
+            cell.time.text = "\(finaltime)"
         
         
             //profile image

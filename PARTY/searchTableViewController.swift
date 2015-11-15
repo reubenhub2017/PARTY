@@ -9,7 +9,7 @@
 import UIKit
 import Parse
 
-class searchTableViewController: UITableViewController, UISearchBarDelegate, UISearchResultsUpdating {
+class searchTableViewController: UITableViewController, UISearchBarDelegate {
     var searchuser: [PFUser] = [PFUser]()
     var userSearchController = UISearchController!()
     var searchActive: Bool = false
@@ -72,7 +72,7 @@ class searchTableViewController: UITableViewController, UISearchBarDelegate, UIS
         //self.tableView.tableHeaderView = userSearchController.searchBar
         // This is used for dynamic seah results updating while the user types
         // Requires UISearchResultsUpdating delegate
-        self.userSearchController.searchResultsUpdater = self
+        //self.userSearchController.searchResultsUpdater = self
         
         // Configure the search controller's search bar
         self.userSearchController.searchBar.placeholder = "Search for a user"
@@ -292,14 +292,14 @@ class searchTableViewController: UITableViewController, UISearchBarDelegate, UIS
 //        self.loadObjects()
 //    }
     
-    func updateSearchResultsForSearchController(searchController: UISearchController) {
-        
-        let searchString: String = searchController.searchBar.text!.lowercaseString
-        if (searchString != "" && !self.searchActive) {
-            loadusers(searchString)
-            
-        }
-    }
+//    func updateSearchResultsForSearchController(searchController: UISearchController) {
+//        
+//        let searchString: String = searchController.searchBar.text!.lowercaseString
+//        if (searchString != "" && !self.searchActive) {
+//            loadusers(searchString)
+//            
+//        }
+//    }
 func searchBarSearchButtonClicked(searchBar: UISearchBar) {
     
     // Force search if user pushes button

@@ -22,8 +22,7 @@ class customTableViewCell: PFTableViewCell {
     
     @IBOutlet weak var userfollower: UILabel!
     @IBOutlet weak var unfollowpressed: UIButton!
-    @IBAction func unfollowbtnpressed(sender: AnyObject) {
-    }
+
    
     @IBOutlet weak var userprogileimage: UIImageView!
     

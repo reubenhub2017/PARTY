@@ -9,6 +9,13 @@
 import UIKit
 import Parse
 class friendsTableViewController: PFQueryTableViewController {
+     var unuserfollowbutton : PFObject!
+    var cell: customTableViewCell!
+  
+    
+    
+    
+ 
 
     override init(style: UITableViewStyle, className: String!) {
         super.init(style: style, className: className)
@@ -28,6 +35,7 @@ class friendsTableViewController: PFQueryTableViewController {
         let queryforfollowingfriends = PFQuery(className: "Follow")
         queryforfollowingfriends.whereKey("from", equalTo: PFUser.currentUser()!)
         queryforfollowingfriends.whereKey("Type", equalTo: "Follow")
+        queryforfollowingfriends.includeKey("to")
       
         
         
@@ -46,12 +54,8 @@ class friendsTableViewController: PFQueryTableViewController {
    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
 
     override func didReceiveMemoryWarning() {
@@ -89,29 +93,22 @@ class friendsTableViewController: PFQueryTableViewController {
         let cell : customTableViewCell = tableView.dequeueReusableCellWithIdentifier("friendcell") as! customTableViewCell
         
     
-        // set up the query on the Follow table
-        let query = PFQuery(className: "Follow")
-        query.whereKey("from", equalTo: PFUser.currentUser()!)
+       
+  
+                let otherUse = object.objectForKey("to") as? PFUser
         
-        // execute the query
-        query.findObjectsInBackgroundWithBlock{
-            (objects: [AnyObject]?, error: NSError?) -> Void in
-            if let objects = objects {
-                for o in objects {
-                    // o is an entry in the Follow table
-                    // to get the user, we get the object with the to key
-                    let otherUse = o.objectForKey("to") as? PFUser
-                    print(otherUse?.username)
-                    
+                    unuserfollowbutton = otherUse
                     
                     cell.userfollower.text = otherUse?.username
+                  
+
+           
                     
-                }
-            }
-            if error != nil {
-            print(error)
-            }
-        }
+                    
+                    
+                    
+                   
+        
  
 
         // Configure the cell...
@@ -119,6 +116,32 @@ class friendsTableViewController: PFQueryTableViewController {
         return cell
     }
     
+  
+    @IBAction func deletefriend(sender: AnyObject) {
+        let unfollow = PFQuery(className: "Follow")
+        let otheruser = unuserfollowbutton
+        unfollow.whereKey("to", equalTo: otheruser)
+  
+      
+        
+       
+      
+        
+        unfollow.findObjectsInBackgroundWithBlock({ (objects:[AnyObject]?, error:NSError?) -> Void in
+            for object in objects! {
+                
+                object.deleteEventually()
+                print("success")
+                self.tableView.reloadData()
+            }
+            if error != nil {
+            print(error)
+            
+            }
+        })
+    
+    
+    }
 
     /*
     // Override to support conditional editing of the table view.

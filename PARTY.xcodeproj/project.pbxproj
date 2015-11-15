@@ -38,6 +38,7 @@
 		AE81E67D1B757C830082FAAF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE81E67B1B757C830082FAAF /* Main.storyboard */; };
 		AE8660241BBC8F220088BC21 /* customTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8660231BBC8F220088BC21 /* customTableViewCell.swift */; };
 		AE8FE5FB1BE54863003EFB23 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = AE8FE5FA1BE54863003EFB23 /* libsqlite3.tbd */; };
+		AE94C7761BF86A9C009FEAEB /* timextension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE94C7751BF86A9C009FEAEB /* timextension.swift */; };
 		AEBA1C9B1BF80953005C55E5 /* usernameemailpasswordchangeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEBA1C9A1BF80953005C55E5 /* usernameemailpasswordchangeTableViewController.swift */; };
 		AEC478C31BEC1DC80080B7BE /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = AEC478C21BEC1DC80080B7BE /* libsqlite3.0.tbd */; };
 		AECF20971BE70859006B2762 /* attendeesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AECF20961BE70858006B2762 /* attendeesTableViewController.swift */; };
@@ -98,6 +99,7 @@
 		AE81E67C1B757C830082FAAF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		AE8660231BBC8F220088BC21 /* customTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = customTableViewCell.swift; sourceTree = "<group>"; };
 		AE8FE5FA1BE54863003EFB23 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		AE94C7751BF86A9C009FEAEB /* timextension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = timextension.swift; sourceTree = "<group>"; };
 		AEBA1C9A1BF80953005C55E5 /* usernameemailpasswordchangeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = usernameemailpasswordchangeTableViewController.swift; sourceTree = "<group>"; };
 		AEC478C21BEC1DC80080B7BE /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 		AECF20961BE70858006B2762 /* attendeesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = attendeesTableViewController.swift; sourceTree = "<group>"; };
@@ -235,6 +237,7 @@
 				AE29899A1B9631540054697D /* parseheader.m */,
 				AED1A38C1B40A16F00CCB553 /* LaunchScreen.xib */,
 				AE76A6A01BDB22B4009C4555 /* pictureextension.swift */,
+				AE94C7751BF86A9C009FEAEB /* timextension.swift */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -367,6 +370,7 @@
 				AE6473151BAF8B3D00F0B88B /* locationuploadViewController.swift in Sources */,
 				AE76A69D1BDA9B70009C4555 /* initchangeViewController.swift in Sources */,
 				AE8660241BBC8F220088BC21 /* customTableViewCell.swift in Sources */,
+				AE94C7761BF86A9C009FEAEB /* timextension.swift in Sources */,
 				AECF20971BE70859006B2762 /* attendeesTableViewController.swift in Sources */,
 				AE76A6A11BDB22B4009C4555 /* pictureextension.swift in Sources */,
 				AE377AED1BC2084900BD40CD /* settingprofileTableView.swift in Sources */,

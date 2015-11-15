@@ -67,7 +67,7 @@ CLLocationManagerDelegate {
     }
     @IBAction func finishpressed(sender: AnyObject) {
         let post = PFObject(className: "parties")
-        let userhost = PFUser()
+        let userhost = PFUser.currentUser()!
         //we are going to post the data to Parse : Classname Parties
         
         post["title"] = titleofparty.text

@@ -15,9 +15,12 @@ class DetailViewViewController:UIViewController  {
                 let query = PFObject(className: "Activity")
                 query.setValue(self.party!.objectId, forKey: "Goingto")
                 query.setValue(PFUser.currentUser(), forKey: "user")
-                let userattending = PFUser()
-                userattending.incrementKey("attending")
-                userattending.saveInBackground()
+                
+                
+                
+                let userattending = PFUser.currentUser()
+                userattending!.incrementKey("attendingnumber")
+                userattending!.saveInBackground()
                 
                 
                 query.saveInBackgroundWithBlock({ (success:Bool, error:NSError?) -> Void in
@@ -129,7 +132,7 @@ class DetailViewViewController:UIViewController  {
             
         }
         if(addeding == 1){
-            self.numberofpeople.text = " person is coming to this party"
+            self.numberofpeople.text = " A person is coming to this party"
             
         }
             
