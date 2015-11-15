@@ -15,7 +15,7 @@ class DetailViewViewController:UIViewController  {
                 let query = PFObject(className: "Activity")
                 query.setValue(self.party!.objectId, forKey: "Goingto")
                 query.setValue(PFUser.currentUser(), forKey: "user")
-                let userattending = PFObject(className: "User")
+                let userattending = PFUser()
                 userattending.incrementKey("attending")
                 userattending.saveInBackground()
                 

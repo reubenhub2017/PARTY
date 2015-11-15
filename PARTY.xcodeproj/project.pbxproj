@@ -38,6 +38,7 @@
 		AE81E67D1B757C830082FAAF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE81E67B1B757C830082FAAF /* Main.storyboard */; };
 		AE8660241BBC8F220088BC21 /* customTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8660231BBC8F220088BC21 /* customTableViewCell.swift */; };
 		AE8FE5FB1BE54863003EFB23 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = AE8FE5FA1BE54863003EFB23 /* libsqlite3.tbd */; };
+		AEBA1C9B1BF80953005C55E5 /* usernameemailpasswordchangeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEBA1C9A1BF80953005C55E5 /* usernameemailpasswordchangeTableViewController.swift */; };
 		AEC478C31BEC1DC80080B7BE /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = AEC478C21BEC1DC80080B7BE /* libsqlite3.0.tbd */; };
 		AECF20971BE70859006B2762 /* attendeesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AECF20961BE70858006B2762 /* attendeesTableViewController.swift */; };
 		AED1A3821B40A16F00CCB553 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED1A3811B40A16F00CCB553 /* AppDelegate.swift */; };
@@ -46,7 +47,6 @@
 		AED1A38E1B40A16F00CCB553 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = AED1A38C1B40A16F00CCB553 /* LaunchScreen.xib */; };
 		AED1A39A1B40A16F00CCB553 /* PARTYTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED1A3991B40A16F00CCB553 /* PARTYTests.swift */; };
 		AEDC8D321BF69E69003CDB2A /* UserlocationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEDC8D311BF69E69003CDB2A /* UserlocationTableViewController.swift */; };
-		AEDC8D341BF6BE3C003CDB2A /* currentlocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEDC8D331BF6BE3C003CDB2A /* currentlocation.swift */; };
 		AEDF7A9D1B93DB9000C8D83A /* homefeedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEDF7A9C1B93DB9000C8D83A /* homefeedTableViewController.swift */; };
 		AEE47C531BDECDC900C00C28 /* searchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE47C521BDECDC900C00C28 /* searchTableViewController.swift */; };
 		AEE870381B7BAD1E0072F399 /* registrationcontroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE870371B7BAD1E0072F399 /* registrationcontroller.swift */; };
@@ -98,6 +98,7 @@
 		AE81E67C1B757C830082FAAF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		AE8660231BBC8F220088BC21 /* customTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = customTableViewCell.swift; sourceTree = "<group>"; };
 		AE8FE5FA1BE54863003EFB23 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		AEBA1C9A1BF80953005C55E5 /* usernameemailpasswordchangeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = usernameemailpasswordchangeTableViewController.swift; sourceTree = "<group>"; };
 		AEC478C21BEC1DC80080B7BE /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 		AECF20961BE70858006B2762 /* attendeesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = attendeesTableViewController.swift; sourceTree = "<group>"; };
 		AED1A37C1B40A16F00CCB553 /* PARTY.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PARTY.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -110,7 +111,6 @@
 		AED1A3981B40A16F00CCB553 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AED1A3991B40A16F00CCB553 /* PARTYTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PARTYTests.swift; sourceTree = "<group>"; };
 		AEDC8D311BF69E69003CDB2A /* UserlocationTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserlocationTableViewController.swift; sourceTree = "<group>"; };
-		AEDC8D331BF6BE3C003CDB2A /* currentlocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = currentlocation.swift; path = ../currentlocation.swift; sourceTree = "<group>"; };
 		AEDF7A9C1B93DB9000C8D83A /* homefeedTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = homefeedTableViewController.swift; sourceTree = "<group>"; };
 		AEE47C521BDECDC900C00C28 /* searchTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = searchTableViewController.swift; sourceTree = "<group>"; };
 		AEE870371B7BAD1E0072F399 /* registrationcontroller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = registrationcontroller.swift; sourceTree = "<group>"; };
@@ -200,7 +200,6 @@
 		AED1A37E1B40A16F00CCB553 /* PARTY */ = {
 			isa = PBXGroup;
 			children = (
-				AEDC8D331BF6BE3C003CDB2A /* currentlocation.swift */,
 				AEDF7A9C1B93DB9000C8D83A /* homefeedTableViewController.swift */,
 				AEDC8D311BF69E69003CDB2A /* UserlocationTableViewController.swift */,
 				AE4C7E321BE5319D0049ED10 /* friendsTableViewController.swift */,
@@ -215,6 +214,7 @@
 				AECF20961BE70858006B2762 /* attendeesTableViewController.swift */,
 				AEE47C521BDECDC900C00C28 /* searchTableViewController.swift */,
 				AE76A69E1BDAD171009C4555 /* settingsViewController.swift */,
+				AEBA1C9A1BF80953005C55E5 /* usernameemailpasswordchangeTableViewController.swift */,
 				AE76A69C1BDA9B70009C4555 /* initchangeViewController.swift */,
 				AE377AEC1BC2084900BD40CD /* settingprofileTableView.swift */,
 				AE7558CC1BBE533700970588 /* DetailViewViewController.swift */,
@@ -378,7 +378,7 @@
 				AE76A69B1BDA8D8C009C4555 /* slideViewController.swift in Sources */,
 				AEED88991BBF8A8C00CFFA9A /* profileTableViewController.swift in Sources */,
 				AEDF7A9D1B93DB9000C8D83A /* homefeedTableViewController.swift in Sources */,
-				AEDC8D341BF6BE3C003CDB2A /* currentlocation.swift in Sources */,
+				AEBA1C9B1BF80953005C55E5 /* usernameemailpasswordchangeTableViewController.swift in Sources */,
 				AEE47C531BDECDC900C00C28 /* searchTableViewController.swift in Sources */,
 				AE3E84181BCCB14400AC5D3C /* ContentViewController.swift in Sources */,
 				AE29899B1B9631540054697D /* parseheader.m in Sources */,
