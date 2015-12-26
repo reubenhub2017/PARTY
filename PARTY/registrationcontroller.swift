@@ -82,14 +82,19 @@ class registrationcontroller: UIViewController {
         user.username = useremail
         user.password = userpass
         user.email = useremail
+        user["hostednumber"] = 0
+        user["attendingnumber"] = 0
+        
         
         user.signUpInBackgroundWithBlock {(succeeded, error: NSError?) -> Void in
         if(error == nil){
         //Great you signed in !
+            
             NSUserDefaults.standardUserDefaults().setBool(true, forKey: "isUserLoggedIn");
             NSUserDefaults.standardUserDefaults().synchronize();
-            self.dismissViewControllerAnimated(true, completion: nil)
-            //self.performSegueWithIdentifier("slidesegue", sender: self)
+            
+            self.performSegueWithIdentifier("slidesegue", sender: self)
+            
             
         
            
@@ -104,7 +109,16 @@ class registrationcontroller: UIViewController {
         self.navigationItem.hidesBackButton = false
         self.navigationController?.hidesBarsWhenKeyboardAppears = false
         
+        
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+        view.addGestureRecognizer(tap)
+        
         // Do any additional setup after loading the view.
+    }
+    
+    func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
     }
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)

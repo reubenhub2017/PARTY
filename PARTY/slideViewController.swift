@@ -26,8 +26,8 @@ class slideViewController: UIViewController, UIPageViewControllerDataSource {
         self.navigationController?.navigationBar.hidden = true
         
         
-        self.pageTitle = NSArray(objects: "Explore","Today Widget")
-        self.pageImage = NSArray(objects: "page1", "page2")
+        self.pageTitle = NSArray(objects: "Explore","Today Widget","People")
+        self.pageImage = NSArray(objects: "party", "searchpartiess","privacy")
         
         self.pageController = self.storyboard?.instantiateViewControllerWithIdentifier("Pageviewcontroller") as! UIPageViewController
         
@@ -39,7 +39,7 @@ class slideViewController: UIViewController, UIPageViewControllerDataSource {
         self.pageController.setViewControllers(viewControllers as? [UIViewController], direction: .Forward, animated: true, completion: nil)
         
         
-        self.pageController.view.frame = CGRectMake(0, 30, self.view.frame.width, self.view.frame.size.height-60 )
+        self.pageController.view.frame = CGRectMake(0, 30, self.view.frame.width, self.view.frame.size.height-30 )
         
         
         

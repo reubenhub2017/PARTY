@@ -14,15 +14,17 @@ class UserlocationTableViewController: PFQueryTableViewController, CLLocationMan
     var parties : NSMutableArray = NSMutableArray()
     var currentLocation : CLLocationCoordinate2D?
     
+  
+    
     
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         locationManager.stopUpdatingLocation()
         if(locations.count != 0){
             let location = locations[0] as CLLocation
-            print(location.coordinate)
+           
             currentLocation = location.coordinate
         } else {
-            print("Cannot fetch your location")
+           
         }
     }
 
@@ -48,7 +50,16 @@ class UserlocationTableViewController: PFQueryTableViewController, CLLocationMan
         locationManager.delegate = self
         self.locationManager.requestWhenInUseAuthorization()
         self.locationManager.startUpdatingLocation()
-        self.navigationItem.title = "PARTY"
+        self.navigationItem.title = "Explore"
+        Appirater.appLaunched(true)
+        Appirater.setAppId("1070877486")
+        Appirater.setDaysUntilPrompt(3)
+        Appirater.setUsesUntilPrompt(3)
+        Appirater.setSignificantEventsUntilPrompt(-1)
+        Appirater.setTimeBeforeReminding(3)
+        Appirater.setDebug(false)
+        
+        
        
 
         // Uncomment the following line to preserve selection between presentations
@@ -115,6 +126,17 @@ class UserlocationTableViewController: PFQueryTableViewController, CLLocationMan
             
             
         }
+        
+        let newtime = NSDate()
+        
+        let time = object!.createdAt
+        time!.minutesFrom(time!)
+        
+        let finaltime = newtime.offsetFrom(time!)
+        
+        
+        cell.time.text = "\(finaltime)"
+        
         
         cell.profcellimage.layer.cornerRadius = cell.profcellimage.frame.size.width/2
         cell.profcellimage.clipsToBounds = true

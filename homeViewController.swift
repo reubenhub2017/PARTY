@@ -24,14 +24,14 @@ class homeViewController: UITabBarController {
         //we need the white item color
         
         
-        
-        let user = PFUser()
-        
-        
-        if !user.isAuthenticated() {
-        self.performSegueWithIdentifier("homeview", sender: self);
-        
-        }
+//        
+//        let user = PFUser()
+//        
+//        
+//        if !user.isAuthenticated() {
+//        self.performSegueWithIdentifier("homeview", sender: self);
+//        
+//        }
         
     
 

@@ -7,34 +7,45 @@
 //
 
 import UIKit
+import Parse
 
 class attendeesTableViewController: PFQueryTableViewController {
 
+    @IBOutlet weak var open: UIBarButtonItem!
      var user2: PFUser!
+     var therequesteduser : PFObject!
+    var cell : customTableViewCell!
+
+    
+    
+    
     override init(style: UITableViewStyle, className: String!) {
         super.init(style: style, className: className)
     }
     
-
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
         self.parseClassName = "Activity"
-        self.textKey = "partytitle"
+        self.textKey = "Goingto"
         self.pullToRefreshEnabled = true
-        self.objectsPerPage = 200
+        self.objectsPerPage = 50
     }
+    
+    
     override func queryForTable() -> PFQuery {
         
         let searchforuser = PFQuery(className: "Activity")
-        searchforuser.whereKey("user", notEqualTo: PFUser.currentUser()!)
+        searchforuser.whereKey("partyhost", equalTo: PFUser.currentUser()!)
         searchforuser.includeKey("user")
+        
+        
         
         
         let searchforpary = PFQuery(className: "parties")
         searchforpary.whereKey("objectId", matchesKey: "Goingto", inQuery: searchforuser)
-            
+        
        
         
         return searchforuser
@@ -44,6 +55,11 @@ class attendeesTableViewController: PFQueryTableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        open.target = self.revealViewController()
+        open.action = Selector("revealToggle:")
+        self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+        
+   
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -70,17 +86,50 @@ class attendeesTableViewController: PFQueryTableViewController {
         // #warning Incomplete implementation, return the number of rows
         return objects!.count
     }
+    
+    override func objectAtIndexPath(indexPath: NSIndexPath!) -> PFObject? {
+        var obj : PFObject? = nil
+        
+        if(indexPath.row < self.objects!.count){
+            obj = self.objects![indexPath.row] as? PFObject
+        }
+        
+        return obj
+    }
+
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath, object: PFObject!) -> PFTableViewCell
     {
+      
         let cell : customTableViewCell = tableView.dequeueReusableCellWithIdentifier("Cell") as! customTableViewCell
         
      
-       
         let userstring =  object.objectForKey("user") as? PFUser
         let username = userstring
+        therequesteduser = username
+        
+        let partyrequest = object.objectForKey("request") as? Bool
+        if partyrequest == true {
         cell.sentence.text = username!.username!  + " is going to your party"
+            
+            
+            
+            cell.attendeespic.layer.cornerRadius = cell.attendeespic.frame.size.width/2
+            cell.attendeespic.clipsToBounds = true
+            cell.attendeespic.layer.masksToBounds = true
+            
+            cell.attendeespic.layer.borderColor = UIColor.blackColor().CGColor
+            cell.attendeespic.layer.borderWidth = 1.0
+    
+            
+        }
+        
+        
+      
+    
+        
+        
        
         
         //profile image
@@ -106,75 +155,40 @@ class attendeesTableViewController: PFQueryTableViewController {
                 }
             }
         }
+    
+    
+                
+        
         return cell
     }
   
 
-        // Configure the cell...
-
-
-            
-    
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
 
     
-    // Override to support rearranging the table view.
-//    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-//        
-//        
-//        let searchforparty = PFQuery(className: "parties")
-//        searchforparty.whereKey("partyhost", equalTo: (PFUser.currentUser()?.objectId)!)
-//        searchforparty.includeKey("objectId")
-//        
-//        let searchforpeople = PFQuery(className: "Activity")
-//        searchforpeople.whereKey("Goingto", matchesKey: "objectId", inQuery: searchforpeople)
-//        
-//        
-//        
-//    
-//    
-//    
-//    
-//    
-//    
-//    }
     
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        
+        if(segue.identifier == "acceptrequest"){
+            let indexPath = self.tableView.indexPathForSelectedRow!
+            let obj = self.objects![indexPath.row] as! PFObject
+            let navVC = segue.destinationViewController as! UINavigationController
+            let detailVC = navVC.topViewController as! userdetailViewController
+            detailVC.acceptrequestobject = obj
+            
+            
+            
+            
+        }
     }
-    */
-
+    @IBAction func acceptedrequest(sender: AnyObject) {
+        //thePFUSER new 
+        let otheruser = therequesteduser
+        let setnewvalue = PFObject(className: "Activity")
+        setnewvalue.setValue("false", forKey: "request")
+        setnewvalue.setValue(otheruser, forKey: "user")
+        otheruser.saveInBackground()
+        print("success")
+        
+        
+    }
 }

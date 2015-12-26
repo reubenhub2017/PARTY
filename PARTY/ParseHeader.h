@@ -10,4 +10,6 @@
 #define ParseHeader_h
 #import <Parse/Parse.h>
 #import <ParseUI/ParseUI.h>
+#import "SWRevealViewController.h"
+#import "Appirater.h"
 #endif /* ParseHeader_h */

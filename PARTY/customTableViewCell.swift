@@ -32,8 +32,26 @@ class customTableViewCell: PFTableViewCell {
     
     @IBOutlet weak var profcellimage: UIImageView!
     
+    @IBOutlet weak var acceptedrequest: UIButton!
     @IBOutlet weak var sentence: UILabel!
     @IBOutlet weak var addedtime: UILabel!
+    
+    
+    
+    //the  accepted request cells
+    @IBOutlet weak var theacceptedrequestpix: UIImageView!
+    
+    @IBOutlet weak var theacceptedrequestsen: UILabel!
+    
+    //the request cells
+    
+    @IBOutlet weak var therequestcellimage: UIImageView!
+    
+    @IBOutlet weak var therequestsentence: UILabel!
+    
+    @IBOutlet weak var acceptedbutton: UIButton!
+    
+  
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

@@ -27,7 +27,7 @@ class profileTableViewController: UITableViewController {
     pimage.layer.masksToBounds = true
         
     pimage.layer.borderColor = UIColor.blackColor().CGColor
-    pimage.layer.borderWidth = 3.0
+    pimage.layer.borderWidth = 1.0
         
         
       
@@ -40,7 +40,7 @@ class profileTableViewController: UITableViewController {
                 }
             }
         }
-            
+        
         
         
         // Uncomment the following line to preserve selection between presentations
@@ -80,13 +80,19 @@ class profileTableViewController: UITableViewController {
                 self.hostnumber.text = "\(host)"
                 self.attendednumber.text = "\(attend)"
                 
-                print(host)
+                
                 
             } else {
-                print(error)
+                
             }
         }
-        
+        if let userPicture = PFUser.currentUser()!["profileimage"] as? PFFile {
+            userPicture.getDataInBackgroundWithBlock { (imageData: NSData?, error: NSError?) -> Void in
+                if (error == nil) {
+                    self.pimage.image = UIImage(data:imageData!)
+                }
+            }
+        }
         
         
     }

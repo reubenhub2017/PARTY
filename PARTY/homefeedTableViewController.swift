@@ -47,7 +47,7 @@ var parties : NSMutableArray = NSMutableArray()
         locationManager.stopUpdatingLocation()
         if(locations.count != 0){
             let location = locations[0] as CLLocation
-            print(location.coordinate)
+           
             currentLocation = location.coordinate
         } else {
             print("Cannot fetch your location")
@@ -91,7 +91,7 @@ var parties : NSMutableArray = NSMutableArray()
 
     
     func locationManager(manager: CLLocationManager, didFailWithError error: NSError){
-      print(error)
+      
         
     }
     //this is the function for getting the parties
@@ -176,6 +176,15 @@ var parties : NSMutableArray = NSMutableArray()
     
         return obj
     }
+    @IBAction func unwindToSegue(segue:UIStoryboardSegue) {
+        _ = segue.sourceViewController as! newpartiesViewController
+        
+        
+        
+        
+    }
+        
+
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath, object: PFObject!) -> PFTableViewCell
@@ -210,7 +219,7 @@ var parties : NSMutableArray = NSMutableArray()
             let newtime = NSDate()
             
             let time = object!.createdAt
-            let time2 = time!.minutesFrom(time!)
+            time!.minutesFrom(time!)
             
             let finaltime = newtime.offsetFrom(time!)
            
@@ -269,6 +278,5 @@ var parties : NSMutableArray = NSMutableArray()
         
         }
     }
-    
 
 }

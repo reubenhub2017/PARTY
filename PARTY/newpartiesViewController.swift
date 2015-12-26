@@ -14,6 +14,8 @@ import MapKit
 
 class newpartiesViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate,
 CLLocationManagerDelegate {
+    @IBOutlet weak var privacyswitch: UISwitch!
+    
     
     @IBOutlet weak var newpartyuserimage: UIImageView!
     
@@ -38,6 +40,8 @@ CLLocationManagerDelegate {
     @IBAction func imageupload(sender: AnyObject) {
         
         
+        
+        
         let imagePicker = UIImagePickerController()
         imagePicker.delegate = self
         imagePicker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
@@ -59,17 +63,29 @@ CLLocationManagerDelegate {
         locationManager.stopUpdatingLocation()
         if(locations.count != 0){
             let location = locations[0] as CLLocation
-            print(location.coordinate)
+            
             currentLocation = location.coordinate
         } else {
             print("Cannot fetch your location")
         }
     }
+    @IBAction func cancelbtn(sender: AnyObject) {
+    
+    self.dismissViewControllerAnimated(true, completion: nil)
+    
+    
+    }
     @IBAction func finishpressed(sender: AnyObject) {
         let post = PFObject(className: "parties")
         let userhost = PFUser.currentUser()!
         //we are going to post the data to Parse : Classname Parties
-        
+        if privacyswitch.on {
+        post["privacy"] = true
+        }
+        else {
+        post["privacy"] = false
+        }
+
         post["title"] = titleofparty.text
         post["description"] = descofparty.text
         post["attending"] = 0
@@ -83,19 +99,29 @@ CLLocationManagerDelegate {
         userhost.saveInBackground()
         
         
-        
-        
         userhost.incrementKey("hostednumber")
-        
-        
+      
         self.dismissViewControllerAnimated(true, completion: nil)
         
-        
+       
+      
     }
+  
+ 
+    
+   
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    override func viewWillAppear(animated: Bool) {
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
+    
+    
+    
+    
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -104,6 +130,7 @@ CLLocationManagerDelegate {
         self.locationManager.requestWhenInUseAuthorization()
         self.locationManager.requestAlwaysAuthorization()
         self.locationManager.startUpdatingLocation()
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: " ", style: .Plain, target: nil, action: nil)
         
         newpartyuserimage.layer.cornerRadius = newpartyuserimage.layer.frame.size.width/2
         newpartyuserimage.clipsToBounds = true
@@ -130,9 +157,25 @@ CLLocationManagerDelegate {
         
         
         
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+        view.addGestureRecognizer(tap)
         
+        // Do any additional setup after loading the view.
     }
-    
+    func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
+    }
+    func displayMessage(theMesssage:String)
+    {
+        // Display alert message with confirmation.
+        let myAlert = UIAlertController(title:"Party Notification", message:theMesssage, preferredStyle: UIAlertControllerStyle.Alert);let okAction = UIAlertAction(title:"Ok", style:UIAlertActionStyle.Default){ action in
+            self.dismissViewControllerAnimated(true, completion:nil);
+        }
+        myAlert.addAction(okAction);
+        self.presentViewController(myAlert, animated:true, completion:nil);
+    }
+
     /*
     // MARK: - Navigation
     

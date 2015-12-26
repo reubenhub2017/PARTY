@@ -43,7 +43,7 @@ class locationuploadViewController: newpartiesViewController, UISearchBarDelegat
         searchBar.resignFirstResponder()
         dismissViewControllerAnimated(true, completion: nil)
         if self.mapView.annotations.count != 0 {
-        annotation = self.mapView.annotations[0] as MKAnnotation
+        //annotation = self.mapView.annotations[0]
         self.mapView.removeAnnotation(annotation)
         
         }

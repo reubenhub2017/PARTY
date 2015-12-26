@@ -22,14 +22,15 @@ class settingprofileTableView: UITableViewController {
     
     @IBAction func logoutbutton(sender: AnyObject) {
         
-        let alertController = UIAlertController(title: "Default AlertController", message: "A standard alert", preferredStyle: .Alert)
+        let alertController = UIAlertController(title: "Sign Out", message: "Are you sure you want to Sign out", preferredStyle: .Alert)
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel) { (action:UIAlertAction!) in
             print("you have pressed the Cancel button");
         }
         
         
-        let OKAction = UIAlertAction(title: "OK", style: .Default) { (action:UIAlertAction!) in
+        let OKAction = UIAlertAction(title: "OK", style: .Default) {
+            (action:UIAlertAction!) in
             
             NSUserDefaults.standardUserDefaults().setBool(false, forKey: "isUserLoggedIn");
             NSUserDefaults.standardUserDefaults().synchronize();

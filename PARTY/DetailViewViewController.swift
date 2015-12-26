@@ -5,19 +5,41 @@ import CoreLocation
 
 class DetailViewViewController:UIViewController  {
     var currentObject: PFObject?
+    var currentforuser : PFObject!
+    var party :PFObject!
+    
+    @IBOutlet weak var privateviewcontainer: UIView!
+    var toPass : String!
+    
+    var partyname : String!
+    
+    
     
     
     @IBAction func addedpartier(sender: AnyObject) {
         party.incrementKey("attending")
+        let requestoption = party.objectForKey("privacy") as! Bool
+        
         party.saveInBackgroundWithBlock {
             (success: Bool, error: NSError?) -> Void in
             if (success) {
                 let query = PFObject(className: "Activity")
                 query.setValue(self.party!.objectId, forKey: "Goingto")
                 query.setValue(PFUser.currentUser(), forKey: "user")
+                query.setObject(self.party.objectForKey("partyhost")!, forKey: "partyhost")
                 
+                if requestoption == true {
+                    query.setValue(true, forKey: "request")
+                    self.displayMessage("The host has to accept your request, goodluck!")
+             
                 
+                }
+                else {
+                query.setValue(false, forKey: "request")
+                    self.displayMessage("Have fun tonight!")
                 
+                }
+
                 let userattending = PFUser.currentUser()
                 userattending!.incrementKey("attendingnumber")
                 userattending!.saveInBackground()
@@ -26,9 +48,8 @@ class DetailViewViewController:UIViewController  {
                 query.saveInBackgroundWithBlock({ (success:Bool, error:NSError?) -> Void in
                     
                     if error == nil {
-                        print("Success")
+                        
                     }else {
-                        print(error)
                         
                     }
                     
@@ -36,25 +57,18 @@ class DetailViewViewController:UIViewController  {
                 
                 
             } else {
-                print(error)
+               
             }
         }
         
         
         
-        let addeding = party?.objectForKey("attending") as! Int
+        _ = party?.objectForKey("attending") as! Int
+        
        
         
     }
-    
-    
-    
-    var party :PFObject!
-    
-    var toPass : String!
-    
-    var partyname : String!
-    
+
     
     @IBOutlet weak var partymap: MKMapView!
     
@@ -75,25 +89,47 @@ class DetailViewViewController:UIViewController  {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
-    
+
+        
+        
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        //we need the current user 
         
+        let partyprivatecontainer = party.objectForKey("privacy") as! Bool
         
+        if partyprivatecontainer == false {
+        privateviewcontainer.hidden = true
+        
+        }
+        
+        var query: PFQuery = PFQuery(className: "AcceptedRequest")
+        
+        query.whereKey("userwhogotaccepted", equalTo: PFUser.currentUser()!)
+        
+        query.findObjectsInBackgroundWithBlock { (objects, error) -> Void in
+            
+            if error == nil {
+                // The find succeeded.
+                
+                // Do something with the found objects
+                if let objects = objects as? [PFObject] {
+                    for object in objects {
+                        self.privateviewcontainer.hidden = true
+                     
+                    }
+                }
+            }
+        }
+    
         let formatter = NSDateFormatter()
         formatter.dateFormat = "HH:mm"
         
-        //let creatoroftheparty = party?.objectForKey("partyhost") as? PFUser
-        //creatoroftheparty?.username
-        //timecreated.text = "Started at \(formatter.stringFromDate((party?.createdAt)!))" + "created by" + "\(creatoroftheparty)"
-        
-        
-        
-        
+        let creatoroftheparty = party!.objectForKey("partyhost") as! PFUser
        
-        
-        
-        
+        timecreated.text = "Started at \(formatter.stringFromDate((party!.createdAt)!)) " + "created by" + " \(creatoroftheparty.username!)"
+
         let desclocation : PFGeoPoint = party.objectForKey("location") as! PFGeoPoint
         
         let latitude : CLLocationDegrees = desclocation.latitude
@@ -102,6 +138,15 @@ class DetailViewViewController:UIViewController  {
         let location: CLLocationCoordinate2D = CLLocationCoordinate2DMake(latitude, longtitude)
         let location2 = CLLocation(latitude: latitude, longitude: longtitude)
      
+        let regionRadius: CLLocationDistance = 1000
+        
+        func centerMapOnLocation(location: CLLocation) {
+            let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate,
+                regionRadius * 3.0, regionRadius * 3.0)
+            self.partymap.setRegion(coordinateRegion, animated: true)
+        }
+        centerMapOnLocation(location2)
+        
         
         CLGeocoder().reverseGeocodeLocation(location2) { (placemarks, error) -> Void in
             if error != nil {
@@ -111,11 +156,16 @@ class DetailViewViewController:UIViewController  {
             if placemarks!.count > 0 {
                 let pm = placemarks![0] as CLPlacemark
                 let annotation = MKPointAnnotation()
+                 _ = MKCoordinateSpanMake(latitude, longtitude)
+                
+                
+                
                 annotation.title = self.party?.objectForKey("title") as? String
-                annotation.subtitle = "\(pm.subThoroughfare! + " " + pm.thoroughfare!)"
+                annotation.subtitle = "\(pm.subThoroughfare! + " " + pm.thoroughfare! + " " + pm.locality! + " " + pm.postalCode!)"
                 annotation.coordinate = location
                 
                 self.partymap.addAnnotation(annotation)
+            
             }else {
                 print("Problem with the data recieved from Geocoder")
             }
@@ -138,35 +188,18 @@ class DetailViewViewController:UIViewController  {
             
         else {
             self.numberofpeople.text = "\(addeding)" + " people are coming attending this party"
-            
+            }
+    
+    }
+    
+    
+    func displayMessage(theMesssage:String)
+    {
+        // Display alert message with confirmation.
+        let myAlert = UIAlertController(title:"Party Notification", message:theMesssage, preferredStyle: UIAlertControllerStyle.Alert);let okAction = UIAlertAction(title:"Ok", style:UIAlertActionStyle.Default){ action in
+            self.dismissViewControllerAnimated(true, completion:nil);
         }
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+        myAlert.addAction(okAction);
+        self.presentViewController(myAlert, animated:true, completion:nil);
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
-    
-    
-    /*
-    // MARK: - Navigation
-    
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-    // Get the new view controller using segue.destinationViewController.
-    // Pass the selected object to the new view controller.
-    }
-    */
-    
-}

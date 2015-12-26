@@ -23,6 +23,7 @@ class ContentViewController: UIViewController {
         super.viewDidLoad()
         self.imageview.image = UIImage(named: self.imageFile)
         self.titleLabel.text = self.titleIndex
+        self.titleLabel.hidden = true 
         
         // Do any additional setup after loading the view.
     }

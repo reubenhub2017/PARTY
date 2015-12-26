@@ -28,20 +28,20 @@ class FirstViewController: UIViewController  {
         
         
 }
-//    override func viewWillAppear(animated: Bool) {
-//        super.viewWillAppear(animated)
-//        self.navigationController?.navigationBar.hidden = true
-//        
-//        let isUserLoggedIn  = NSUserDefaults.standardUserDefaults().boolForKey("isUserLoggedIn");
-//        
-//        
-//        if(isUserLoggedIn)
-//        {
-//            
-//           self.performSegueWithIdentifier("backtohome", sender: self)
-//            
-//        }
-//    }
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.navigationBar.hidden = true
+        
+        let isUserLoggedIn  = NSUserDefaults.standardUserDefaults().boolForKey("isUserLoggedIn");
+        
+        
+        if(isUserLoggedIn)
+        {
+            
+           self.performSegueWithIdentifier("backtohome", sender: self)
+            
+        }
+    }
     
     
 }

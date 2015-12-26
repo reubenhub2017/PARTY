@@ -4,3 +4,6 @@
 
 #import <Parse/Parse.h>
 #import <ParseUI/ParseUI.h>
+#import "SWRevealViewController.h"
+#import "Appirater.h"
+

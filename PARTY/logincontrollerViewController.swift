@@ -27,11 +27,24 @@ class logincontrollerViewController: UIViewController {
         
         
         
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+        view.addGestureRecognizer(tap)
         
-        
-  
-
         // Do any additional setup after loading the view.
+    }
+    func displayMessage(theMesssage:String)
+    {
+        // Display alert message with confirmation.
+        let myAlert = UIAlertController(title:"Party Notification", message:theMesssage, preferredStyle: UIAlertControllerStyle.Alert);let okAction = UIAlertAction(title:"Ok", style:UIAlertActionStyle.Default){ action in
+            self.dismissViewControllerAnimated(true, completion:nil);
+        }
+        myAlert.addAction(okAction);
+        self.presentViewController(myAlert, animated:true, completion:nil);
+    }
+    
+    func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
     }
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
@@ -57,8 +70,30 @@ class logincontrollerViewController: UIViewController {
     }
     //Login in the user
     
+    @IBAction func cancelbtn(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    
+    }
     @IBOutlet weak var useremail: UITextField!
     @IBOutlet weak var userpassword: UITextField!
+    
+    @IBOutlet weak var emailrequest: UITextField!
+   
+    @IBAction func resetfunction(sender: AnyObject) {
+        PFUser.requestPasswordResetForEmailInBackground(emailrequest.text!) { (success:Bool?, error:NSError?) -> Void in
+            if(error == nil){
+            self.displayMessage("Great!, check your email for a link from us!")
+            }
+            if error != nil {
+            self.displayMessage("oops! Try again!")
+            
+            }
+        }
+        }
+    
+    
+    
+    
     
     @IBAction func login(sender: AnyObject) {
         
@@ -77,13 +112,27 @@ class logincontrollerViewController: UIViewController {
              
                 
             }else {
-            print("could not find user")
+                let alertController = UIAlertController(title: "Sorry try again", message: "Check to see if your username/password is correct or if you have internet connection", preferredStyle: .Alert)
+                
+                let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel) { (action) in
+                    // ...
+                }
+                alertController.addAction(cancelAction)
+                
+                let OKAction = UIAlertAction(title: "OK", style: .Default) { (action) in
+                    // ...
+                }
+                alertController.addAction(OKAction)
+                
+                self.presentViewController(alertController, animated: true) {
+                    // ...
+                }
+            
+            
             }
         
         }
     
-        
-        
         
     }
     

@@ -28,6 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         // [Optional] Power your app with Local Datastore. For more info, go to
         // https://parse.com/docs/ios_guide#localdatastore/iOS
         Parse.enableLocalDatastore()
+        Appirater.appLaunched(true)
         
         
         
@@ -42,24 +43,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         
         
         let navigationBarAppearace = UINavigationBar.appearance()
+        navigationBarAppearace.backItem?.backBarButtonItem?.title = ""
+        
+        let barAppearace = UIBarButtonItem.appearance()
+        barAppearace.setBackButtonTitlePositionAdjustment(UIOffsetMake(0, -60), forBarMetrics:UIBarMetrics.Default)
+
+
     
         navigationBarAppearace.barTintColor = UIColor(red: 0.6, green: 0.1, blue: 0.1, alpha: 1)
         navigationBarAppearace.tintColor = UIColor.whiteColor()
         navigationBarAppearace.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
         
+      
         
-        
-        let pageControl = UIPageControl.appearance()
-        
-        pageControl.pageIndicatorTintColor = UIColor.lightGrayColor()
-        
-        pageControl.currentPageIndicatorTintColor = UIColor.blackColor()
-        
-        pageControl.backgroundColor = UIColor.whiteColor()
+//        
+//        let pageControl = UIPageControl.appearance()
+//        
+//        pageControl.pageIndicatorTintColor = UIColor.lightGrayColor()
+//        
+//        pageControl.currentPageIndicatorTintColor = UIColor.blackColor()
+//        
+//        pageControl.backgroundColor = UIColor.whiteColor()
         
         application.setStatusBarStyle(UIStatusBarStyle.LightContent, animated: false)
        
-        if let font = UIFont(name: "Helvetica-Bold", size: 20) {
+        if let font = UIFont(name: "Avenir-Black ", size: 18) {
             UINavigationBar.appearance().titleTextAttributes = [NSFontAttributeName: font,  NSForegroundColorAttributeName: UIColor.whiteColor()]
           
          

@@ -40,7 +40,7 @@ class searchTableViewController: UITableViewController, UISearchBarDelegate {
     
     
         func loadusers(searchstring: String) {
-        var query = PFUser.query()
+        let query = PFUser.query()
     
         
         query!.whereKey("username", containsString: searchstring)
@@ -78,7 +78,7 @@ class searchTableViewController: UITableViewController, UISearchBarDelegate {
         self.userSearchController.searchBar.placeholder = "Search for a user"
         //self.userSearchController.searchBar.sizeToFit()
         self.userSearchController.searchBar.delegate = self
-        self.definesPresentationContext = false
+        self.definesPresentationContext = true
         
         self.userSearchController.hidesNavigationBarDuringPresentation = false
        
@@ -91,11 +91,16 @@ class searchTableViewController: UITableViewController, UISearchBarDelegate {
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-            //self.userSearchController.view.removeFromSuperview()
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+        view.addGestureRecognizer(tap)
+        
+        // Do any additional setup after loading the view.
     }
+    func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
+    }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -122,7 +127,7 @@ class searchTableViewController: UITableViewController, UISearchBarDelegate {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        var cell = tableView.dequeueReusableCellWithIdentifier("usercell", forIndexPath: indexPath) as! customTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("usercell", forIndexPath: indexPath) as! customTableViewCell
         if (self.userSearchController.active && self.searchuser.count > indexPath.row) {
         
             
@@ -314,9 +319,15 @@ func searchBarCancelButtonClicked(searchBar: UISearchBar) {
     
     // Clear any search criteria
     searchBar.text = ""
+    self.resignFirstResponder()
+    self.view.endEditing(true)
+    searchBar.resignFirstResponder()
+    
     
     // Force reload of table data from normal data source
 }
     
-
+    func searchBarTextDidEndEditing(searchBar: UISearchBar) {
+        
+    }
 }
