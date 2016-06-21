@@ -10,19 +10,24 @@ import UIKit
 import Foundation
 import Parse
 
-class logincontrollerViewController: UIViewController {
+class logincontrollerViewController: UIViewController, UITextFieldDelegate {
     //Built in function so that if the user presses the anywhere the keyboard will disappear
 //     func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
 //        self.view.endEditing(true)
 //        
 //    }
     
+    let someTextField = UITextField()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        someTextField.delegate = self
         self.navigationController?.navigationBar.hidden = false
       
         self.navigationItem.hidesBackButton = false
         self.navigationController?.hidesBarsWhenKeyboardAppears = false
+        
         
         
         
@@ -32,6 +37,8 @@ class logincontrollerViewController: UIViewController {
         
         // Do any additional setup after loading the view.
     }
+    
+   
     func displayMessage(theMesssage:String)
     {
         // Display alert message with confirmation.
@@ -133,6 +140,14 @@ class logincontrollerViewController: UIViewController {
         
         }
     
+        
+    }
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        useremail.resignFirstResponder()
+        userpassword.resignFirstResponder()
+        emailrequest.resignFirstResponder()
+        
+        return true
         
     }
     

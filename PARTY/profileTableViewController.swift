@@ -8,7 +8,7 @@
 
 import UIKit
 
-class profileTableViewController: UITableViewController {
+class profileTableViewController: UITableViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     
     @IBOutlet weak var pimage: UIImageView!
@@ -17,7 +17,64 @@ class profileTableViewController: UITableViewController {
 
     @IBOutlet weak var pname: UILabel!
     
+    
 
+    @IBAction func editpic(sender: AnyObject) {
+ 
+           
+        let imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        imagePicker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
+        imagePicker.allowsEditing = false
+        self.presentViewController(imagePicker, animated: true, completion: nil)
+            
+      
+        
+        
+      
+
+        
+    }
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage!, editingInfo: [NSObject : AnyObject]!) {
+           let currentU = PFUser.currentUser()?.objectId
+        var imageData = UIImageJPEGRepresentation(pimage.image!,1.0)
+        
+        let parseImagedFile = PFFile(data: imageData!)
+        imageData = pimage.image?.lowestQualityJPEGNSData
+        
+        var query = PFUser.query()
+        query!.getObjectInBackgroundWithId(currentU!) {
+            (query: PFObject?, error: NSError?) -> Void in
+            if error != nil {
+                print(error)
+            } else if let gameScore = query {
+                gameScore["profileimage"] = parseImagedFile
+                gameScore.saveInBackground()
+                self.dismissViewControllerAnimated(true, completion: nil)
+                 self.displayMessage("We updated your picture, it will take a few moments to update our system!")
+                self.pimage.image = image
+                
+                
+            }
+        }
+        
+    }
+    
+        
+        
+    func displayMessage(theMesssage:String)
+    {
+        // Display alert message with confirmation.
+        let myAlert = UIAlertController(title:"Party Notification", message:theMesssage, preferredStyle: UIAlertControllerStyle.Alert);let okAction = UIAlertAction(title:"Ok", style:UIAlertActionStyle.Default){ action in
+            self.dismissViewControllerAnimated(true, completion:nil);
+        }
+        myAlert.addAction(okAction);
+        self.presentViewController(myAlert, animated:true, completion:nil);
+    }
+    
+        
+        
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,8 +88,6 @@ class profileTableViewController: UITableViewController {
         
         
       
-    
-        
         if let userPicture = PFUser.currentUser()!["profileimage"] as? PFFile {
             userPicture.getDataInBackgroundWithBlock { (imageData: NSData?, error: NSError?) -> Void in
                 if (error == nil) {
@@ -40,6 +95,9 @@ class profileTableViewController: UITableViewController {
                 }
             }
         }
+        
+        
+        
         
         
         
@@ -51,8 +109,10 @@ class profileTableViewController: UITableViewController {
         
         //Do any additional setup after loading the view.
         self.navigationController?.navigationBarHidden = false
-                navigationItem.title =  "PROFILE"
+        navigationItem.title =  PFUser.currentUser()!.username!
         //pname.text! = PFUser.currentUser()!.username!
+        
+        
     }
     
     @IBOutlet weak var hostnumber: UILabel!
@@ -62,8 +122,7 @@ class profileTableViewController: UITableViewController {
     
     override func viewWillAppear(animated: Bool) {
         self.navigationController?.navigationBarHidden = false
-        self.navigationItem.title =  "PROFILE"
-        pname.text! = PFUser.currentUser()!.username!
+        //pname.text! = PFUser.currentUser()!.username!
         
         
         let hostdetail : PFQuery = PFUser.query()!
@@ -86,13 +145,8 @@ class profileTableViewController: UITableViewController {
                 
             }
         }
-        if let userPicture = PFUser.currentUser()!["profileimage"] as? PFFile {
-            userPicture.getDataInBackgroundWithBlock { (imageData: NSData?, error: NSError?) -> Void in
-                if (error == nil) {
-                    self.pimage.image = UIImage(data:imageData!)
-                }
-            }
-        }
+        
+        
         
         
     }

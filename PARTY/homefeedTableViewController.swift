@@ -20,6 +20,7 @@ class homefeedTableViewController: PFQueryTableViewController, CLLocationManager
     @IBOutlet weak var switchstates: UISegmentedControl!
   
     @IBOutlet weak var nopartiesview: UIView!
+    var logo = UIImage(named: "iTunesArtwork")
 
     
  
@@ -105,9 +106,15 @@ var parties : NSMutableArray = NSMutableArray()
         locationManager.delegate = self
         self.locationManager.requestWhenInUseAuthorization()
         self.locationManager.startUpdatingLocation()
-          self.navigationItem.title = "PARTY"
+        
+        self.navigationItem.title = "Parties"
+        
         self.nopartiesview.hidden = false
         
+        
+        let settings = UIUserNotificationSettings(forTypes: [.Alert, .Sound, .Badge], categories: nil)
+        UIApplication.sharedApplication().registerUserNotificationSettings(settings)
+        UIApplication.sharedApplication().registerForRemoteNotifications()
         
         let isUserLoggedIn  = NSUserDefaults.standardUserDefaults().boolForKey("isUserLoggedIn");
         

@@ -9,6 +9,7 @@
 import UIKit
 
 class UserlocationTableViewController: PFQueryTableViewController, CLLocationManagerDelegate {
+    @IBOutlet weak var nopartiesview: UIView!
     
     let locationManager = CLLocationManager()
     var parties : NSMutableArray = NSMutableArray()
@@ -50,7 +51,7 @@ class UserlocationTableViewController: PFQueryTableViewController, CLLocationMan
         locationManager.delegate = self
         self.locationManager.requestWhenInUseAuthorization()
         self.locationManager.startUpdatingLocation()
-        self.navigationItem.title = "Explore"
+        self.navigationItem.title = "Featured"
         Appirater.appLaunched(true)
         Appirater.setAppId("1070877486")
         Appirater.setDaysUntilPrompt(3)
@@ -83,7 +84,17 @@ class UserlocationTableViewController: PFQueryTableViewController, CLLocationMan
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
+        if objects!.count == 0 {
+            nopartiesview.hidden = false
+            
+        }else {
+            nopartiesview.hidden = true
+            
+        }
+        
+        
         return objects!.count
+    
     }
 
     

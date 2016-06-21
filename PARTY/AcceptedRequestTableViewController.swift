@@ -91,6 +91,8 @@ class AcceptedRequestTableViewController: PFQueryTableViewController{
         theuserwhogotaccepted = username
         
         
+        
+        
         cell.theacceptedrequestsen.text = username!.username! + " accepted your request "
         
         cell.theacceptedrequestpix.layer.cornerRadius = cell.theacceptedrequestpix.frame.size.width/2

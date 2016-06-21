@@ -56,7 +56,7 @@ class initchangeViewController: UIViewController,UIImagePickerControllerDelegate
         
         let border = CALayer()
         let width = CGFloat(1.0)
-        border.borderColor = UIColor(white: 1.0, alpha: borderAlpha).CGColor
+        border.borderColor = UIColor.blackColor().CGColor
         border.frame = CGRect(x: 0, y: usernamechange.frame.size.height - width, width:  usernamechange.frame.size.width, height: usernamechange.frame.size.height)
         
         border.borderWidth = width
@@ -69,10 +69,10 @@ class initchangeViewController: UIViewController,UIImagePickerControllerDelegate
         
         button.frame = CGRectMake(100, 100, 200, 40)
         button.setTitle("Let's get started", forState: UIControlState.Normal)
-        button.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
+        //button.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
         button.backgroundColor = UIColor.clearColor()
         button.layer.borderWidth = 1.0
-        button.layer.borderColor = UIColor(white: 1.0, alpha: borderAlpha).CGColor
+        button.layer.borderColor = UIColor.blackColor().CGColor
         button.layer.cornerRadius = cornerRadius
         
         //the image design 

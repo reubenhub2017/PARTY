@@ -88,7 +88,7 @@
 		AE50BE1E1BFE5E29001E7CEA /* testviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = testviewViewController.swift; sourceTree = "<group>"; };
 		AE50BE201BFE5F5F001E7CEA /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SWRevealViewController.h; path = "../../../../Downloads/SWRevealViewController-master/SWRevealViewController/SWRevealViewController.h"; sourceTree = "<group>"; };
 		AE50BE211BFE5F5F001E7CEA /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SWRevealViewController.m; path = "../../../../Downloads/SWRevealViewController-master/SWRevealViewController/SWRevealViewController.m"; sourceTree = "<group>"; };
-		AE50BE231BFEB8FA001E7CEA /* otherrequestTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = otherrequestTableViewController.swift; sourceTree = "<group>"; };
+		AE50BE231BFEB8FA001E7CEA /* otherrequestTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = otherrequestTableViewController.swift; path = ../otherrequestTableViewController.swift; sourceTree = "<group>"; };
 		AE50BE251BFEF6E4001E7CEA /* AcceptedRequestTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AcceptedRequestTableViewController.swift; sourceTree = "<group>"; };
 		AE50BE271BFEF7E4001E7CEA /* RequestTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestTableViewController.swift; sourceTree = "<group>"; };
 		AE52116D1C25056900B06EB3 /* termsandconditionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = termsandconditionsViewController.swift; sourceTree = "<group>"; };
@@ -98,7 +98,7 @@
 		AE5BCF5D1C2DEAA300EFC26E /* appirater-master */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "appirater-master"; sourceTree = "<group>"; };
 		AE5BCF5F1C2DED4900EFC26E /* Appirater.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Appirater.h; path = "appirater-master/Appirater.h"; sourceTree = "<group>"; };
 		AE5BCF601C2DED4900EFC26E /* Appirater.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Appirater.m; path = "appirater-master/Appirater.m"; sourceTree = "<group>"; };
-		AE6473141BAF8B3D00F0B88B /* locationuploadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = locationuploadViewController.swift; sourceTree = "<group>"; };
+		AE6473141BAF8B3D00F0B88B /* locationuploadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = locationuploadViewController.swift; path = ../locationuploadViewController.swift; sourceTree = "<group>"; };
 		AE73BC881B7A7CB500AAC317 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		AE73BC891B7A7CB500AAC317 /* AudioUnit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioUnit.framework; path = System/Library/Frameworks/AudioUnit.framework; sourceTree = SDKROOT; };
 		AE73BC8C1B7A7D1B00AAC317 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -116,7 +116,7 @@
 		AE73BCA41B7A815B00AAC317 /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ParseUI.framework; path = "../../../Downloads/parse-library-1.7.5/ParseUI.framework"; sourceTree = "<group>"; };
 		AE73EC0C1B7D94C300E4F45A /* homeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = homeViewController.swift; path = ../homeViewController.swift; sourceTree = "<group>"; };
 		AE7558CC1BBE533700970588 /* DetailViewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewViewController.swift; sourceTree = "<group>"; };
-		AE767E881BAD005E00C3C825 /* newpartiesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = newpartiesViewController.swift; path = PARTY/newpartiesViewController.swift; sourceTree = "<group>"; };
+		AE767E881BAD005E00C3C825 /* newpartiesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = newpartiesViewController.swift; sourceTree = "<group>"; };
 		AE76A69A1BDA8D8C009C4555 /* slideViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = slideViewController.swift; sourceTree = "<group>"; };
 		AE76A69C1BDA9B70009C4555 /* initchangeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = initchangeViewController.swift; sourceTree = "<group>"; };
 		AE76A69E1BDAD171009C4555 /* settingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = settingsViewController.swift; sourceTree = "<group>"; };
@@ -180,56 +180,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		AE73BC9E1B7A7FAB00AAC317 /* Frameworks */ = {
+		AE121DF91C66DE8D0038AD7B /* partyfiles */ = {
 			isa = PBXGroup;
 			children = (
-				AEC478C21BEC1DC80080B7BE /* libsqlite3.0.tbd */,
-				AE8FE5FA1BE54863003EFB23 /* libsqlite3.tbd */,
-				AE73BC9F1B7A815B00AAC317 /* Bolts.framework */,
-				AE73BCA01B7A815B00AAC317 /* Parse.framework */,
-				AE73BCA11B7A815B00AAC317 /* ParseCrashReporting.framework */,
-				AE73BCA21B7A815B00AAC317 /* ParseFacebookUtils.framework */,
-				AE73BCA31B7A815B00AAC317 /* ParseFacebookUtilsV4.framework */,
-				AE73BCA41B7A815B00AAC317 /* ParseUI.framework */,
-				AE73BC8C1B7A7D1B00AAC317 /* CFNetwork.framework */,
-				AE73BC8D1B7A7D1B00AAC317 /* CoreGraphics.framework */,
-				AE73BC8E1B7A7D1B00AAC317 /* CoreLocation.framework */,
-				AE73BC911B7A7D1B00AAC317 /* QuartzCore.framework */,
-				AE73BC921B7A7D1B00AAC317 /* Security.framework */,
-				AE73BC931B7A7D1B00AAC317 /* StoreKit.framework */,
-				AE73BC941B7A7D1B00AAC317 /* SystemConfiguration.framework */,
-				AE73BC881B7A7CB500AAC317 /* AudioToolbox.framework */,
-				AE73BC891B7A7CB500AAC317 /* AudioUnit.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		AED1A3731B40A16F00CCB553 = {
-			isa = PBXGroup;
-			children = (
+				AEED88981BBF8A8C00CFFA9A /* profileTableViewController.swift */,
+				AE3E84171BCCB14400AC5D3C /* ContentViewController.swift */,
 				AE50BE231BFEB8FA001E7CEA /* otherrequestTableViewController.swift */,
 				AE767E881BAD005E00C3C825 /* newpartiesViewController.swift */,
 				AE6473141BAF8B3D00F0B88B /* locationuploadViewController.swift */,
-				AE7CF0B71BEC912E0087CC89 /* parse-library-1.9.1 */,
-				AE73BC9E1B7A7FAB00AAC317 /* Frameworks */,
-				AED1A37E1B40A16F00CCB553 /* PARTY */,
-				AED1A3961B40A16F00CCB553 /* PARTYTests */,
-				AED1A37D1B40A16F00CCB553 /* Products */,
-			);
-			sourceTree = "<group>";
-		};
-		AED1A37D1B40A16F00CCB553 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				AED1A37C1B40A16F00CCB553 /* PARTY.app */,
-				AED1A3931B40A16F00CCB553 /* PARTYTests.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		AED1A37E1B40A16F00CCB553 /* PARTY */ = {
-			isa = PBXGroup;
-			children = (
 				AEDF7A9C1B93DB9000C8D83A /* homefeedTableViewController.swift */,
 				AEDC8D311BF69E69003CDB2A /* UserlocationTableViewController.swift */,
 				AE8660231BBC8F220088BC21 /* customTableViewCell.swift */,
@@ -257,11 +215,61 @@
 				AE76A69C1BDA9B70009C4555 /* initchangeViewController.swift */,
 				AE377AEC1BC2084900BD40CD /* settingprofileTableView.swift */,
 				AE7558CC1BBE533700970588 /* DetailViewViewController.swift */,
+			);
+			name = partyfiles;
+			sourceTree = "<group>";
+		};
+		AE73BC9E1B7A7FAB00AAC317 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AEC478C21BEC1DC80080B7BE /* libsqlite3.0.tbd */,
+				AE8FE5FA1BE54863003EFB23 /* libsqlite3.tbd */,
+				AE73BC9F1B7A815B00AAC317 /* Bolts.framework */,
+				AE73BCA01B7A815B00AAC317 /* Parse.framework */,
+				AE73BCA11B7A815B00AAC317 /* ParseCrashReporting.framework */,
+				AE73BCA21B7A815B00AAC317 /* ParseFacebookUtils.framework */,
+				AE73BCA31B7A815B00AAC317 /* ParseFacebookUtilsV4.framework */,
+				AE73BCA41B7A815B00AAC317 /* ParseUI.framework */,
+				AE73BC8C1B7A7D1B00AAC317 /* CFNetwork.framework */,
+				AE73BC8D1B7A7D1B00AAC317 /* CoreGraphics.framework */,
+				AE73BC8E1B7A7D1B00AAC317 /* CoreLocation.framework */,
+				AE73BC911B7A7D1B00AAC317 /* QuartzCore.framework */,
+				AE73BC921B7A7D1B00AAC317 /* Security.framework */,
+				AE73BC931B7A7D1B00AAC317 /* StoreKit.framework */,
+				AE73BC941B7A7D1B00AAC317 /* SystemConfiguration.framework */,
+				AE73BC881B7A7CB500AAC317 /* AudioToolbox.framework */,
+				AE73BC891B7A7CB500AAC317 /* AudioUnit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		AED1A3731B40A16F00CCB553 = {
+			isa = PBXGroup;
+			children = (
+				AE7CF0B71BEC912E0087CC89 /* parse-library-1.9.1 */,
+				AE73BC9E1B7A7FAB00AAC317 /* Frameworks */,
+				AED1A37E1B40A16F00CCB553 /* PARTY */,
+				AED1A3961B40A16F00CCB553 /* PARTYTests */,
+				AED1A37D1B40A16F00CCB553 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		AED1A37D1B40A16F00CCB553 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AED1A37C1B40A16F00CCB553 /* PARTY.app */,
+				AED1A3931B40A16F00CCB553 /* PARTYTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AED1A37E1B40A16F00CCB553 /* PARTY */ = {
+			isa = PBXGroup;
+			children = (
+				AE121DF91C66DE8D0038AD7B /* partyfiles */,
 				AED1A37F1B40A16F00CCB553 /* Supporting Files */,
 				AE2989981B96303F0054697D /* ParseHeader.h */,
 				AE2989991B9631530054697D /* PARTY-Bridging-Header.h */,
-				AEED88981BBF8A8C00CFFA9A /* profileTableViewController.swift */,
-				AE3E84171BCCB14400AC5D3C /* ContentViewController.swift */,
 			);
 			path = PARTY;
 			sourceTree = "<group>";
@@ -346,7 +354,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0700;
-				LastUpgradeCheck = 0710;
+				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = Versuvian;
 				TargetAttributes = {
 					AED1A37B1B40A16F00CCB553 = {
@@ -354,6 +362,9 @@
 						DevelopmentTeam = 78S5ZSK7MV;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Push = {
 								enabled = 1;
 							};
 						};
@@ -526,7 +537,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = NO;
 				SDKROOT = iphoneos;
@@ -569,7 +580,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				ONLY_ACTIVE_ARCH = NO;
 				SDKROOT = iphoneos;
@@ -583,6 +594,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -595,6 +607,7 @@
 					"/Users/reubenukah/Downloads/parse-library-1.7.5",
 				);
 				INFOPLIST_FILE = PARTY/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.Versuvian.PARTY;
@@ -612,6 +625,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -624,6 +638,7 @@
 					"/Users/reubenukah/Downloads/parse-library-1.7.5",
 				);
 				INFOPLIST_FILE = PARTY/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.Versuvian.PARTY;

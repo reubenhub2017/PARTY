@@ -21,18 +21,21 @@ class usernameemailpasswordchangeTableViewController: UITableViewController {
     @IBAction func updateemailchange(sender: AnyObject) {
     let emailtextchange = emailchange.text
     PFUser.currentUser()?.email = emailtextchange
+      self.displayMessage("We updated your email, it will take a few moments to update our system!")
     PFUser.currentUser()?.saveInBackground()
     
     }
     @IBAction func updateusernamebtn(sender: AnyObject) {
         let usernametextchange = usernamechange.text
-        PFUser.currentUser()?.email = usernametextchange
+        PFUser.currentUser()?.username = usernametextchange
+          self.displayMessage("We updated your username, it will take a few moments to update our system!")
         PFUser.currentUser()?.saveInBackground()
     }
     
     @IBAction func updatepassword(sender: AnyObject) {
         let passwordtextchange = passwordchange.text
-        PFUser.currentUser()?.email = passwordtextchange
+        PFUser.currentUser()?.password = passwordtextchange
+          self.displayMessage("We updated your password, it will take a few moments to update our system!")
         PFUser.currentUser()?.saveInBackground()
     
     }
@@ -65,7 +68,15 @@ class usernameemailpasswordchangeTableViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
 
-
+    func displayMessage(theMesssage:String)
+    {
+        // Display alert message with confirmation.
+        let myAlert = UIAlertController(title:"Party Notification", message:theMesssage, preferredStyle: UIAlertControllerStyle.Alert);let okAction = UIAlertAction(title:"Ok", style:UIAlertActionStyle.Default){ action in
+            self.dismissViewControllerAnimated(true, completion:nil);
+        }
+        myAlert.addAction(okAction);
+        self.presentViewController(myAlert, animated:true, completion:nil);
+    }
 
     /*
     // Override to support conditional editing of the table view.

@@ -204,13 +204,24 @@ class searchTableViewController: UITableViewController, UISearchBarDelegate {
             
         
             
+         
+            
             let otherUser = userfollowbutton
             let follow = PFObject(className: "Follow")
+            
         
             follow.setObject(PFUser.currentUser()!, forKey: "from")
             follow.setObject(otherUser, forKey: "to")
             follow.setObject("Follow", forKey: "Type")
             follow.saveInBackground()
+            
+            let pushQuery = PFInstallation.query()!
+            pushQuery.whereKey("user", equalTo: otherUser! ) //friend is a PFUser object
+            
+            let push = PFPush()
+            push.setQuery(pushQuery)
+            push.setMessage("\(PFUser.currentUser()!.username!) started following you ")
+            push.sendPushInBackground()
         }
         
         else if sender.titleLabel?!.textColor == UIColor.redColor() {

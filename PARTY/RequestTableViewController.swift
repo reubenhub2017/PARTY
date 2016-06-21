@@ -94,7 +94,17 @@ class RequestTableViewController: PFQueryTableViewController{
         
         
         if partyrequest == true {
+            
             cell.therequestsentence.text = username!.username!  + " wants to go to your party"
+            
+                    let pushQuery = PFInstallation.query()!
+                    pushQuery.whereKey("user", equalTo:object.objectForKey("partyhost")!) //friend is a PFUser object
+            
+                    let push = PFPush()
+                    push.setQuery(pushQuery)
+                    push.setMessage(" \(object.objectForKey("partyhost")) wants to go to your party")
+                    push.sendPushInBackground()
+            
          
         }
         cell.therequestcellimage.layer.cornerRadius = cell.therequestcellimage.frame.size.width/2
@@ -142,6 +152,18 @@ class RequestTableViewController: PFQueryTableViewController{
         setnewvalue.setValue(otheruser, forKey: "userwhogotaccepted")
         setnewvalue.setValue(party, forKey: "fromparty")
         setnewvalue.saveInBackground()
+        
+        
+        let pushQuery = PFInstallation.query()!
+        pushQuery.whereKey("user", equalTo: otheruser ) //friend is a PFUser object
+        
+        let push = PFPush()
+        push.setQuery(pushQuery)
+        push.setMessage("\(PFUser.currentUser()!.username!) accepted your party request")
+        push.sendPushInBackground()
+        
+        
+
         print("success")
     
     

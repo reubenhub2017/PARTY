@@ -32,6 +32,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         
         
         
+        if let launchOptions = launchOptions as? [String : AnyObject] {
+            if let notificationDictionary = launchOptions[UIApplicationLaunchOptionsRemoteNotificationKey] as? [NSObject : AnyObject] {
+                self.application(application, didFinishLaunchingWithOptions: notificationDictionary)
+            }
+        }
+        
         // Initialize Parse.
         Parse.setApplicationId("uZyMLPRGXCm96mhQPknOuSzZsqUJSr8kNUc0bHCQ",
             clientKey: "DXmN3pnjumCCECMCbSG3hwfz3fJ85PKzn44YGqEG")
@@ -49,12 +55,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         barAppearace.setBackButtonTitlePositionAdjustment(UIOffsetMake(0, -60), forBarMetrics:UIBarMetrics.Default)
 
 
-    
+        
         navigationBarAppearace.barTintColor = UIColor(red: 0.6, green: 0.1, blue: 0.1, alpha: 1)
         navigationBarAppearace.tintColor = UIColor.whiteColor()
         navigationBarAppearace.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
         
-      
+   
+        
+        
         
 //        
 //        let pageControl = UIPageControl.appearance()
@@ -77,7 +85,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         return true
         
     }
-   
+    func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
+        let installation = PFInstallation.currentInstallation()
+        installation["user"] = PFUser.currentUser()
+        installation.setDeviceTokenFromData(deviceToken)
+        installation.saveInBackground()
+    }
+    
+    func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
+        PFPush.handlePush(userInfo)
+    }
 
     func applicationWillResignActive(application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

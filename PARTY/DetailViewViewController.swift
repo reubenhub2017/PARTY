@@ -31,6 +31,15 @@ class DetailViewViewController:UIViewController  {
                 if requestoption == true {
                     query.setValue(true, forKey: "request")
                     self.displayMessage("The host has to accept your request, goodluck!")
+                    
+                    let pushQuery = PFInstallation.query()!
+                    pushQuery.whereKey("user", equalTo:self.party.objectForKey("partyhost")!) //friend is a PFUser object
+                    
+                    
+                    let push = PFPush()
+                    push.setQuery(pushQuery)
+                    push.setMessage("\(PFUser.currentUser()!.username!) wants to go to your party ")
+                    push.sendPushInBackground()
              
                 
                 }

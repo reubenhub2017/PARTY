@@ -30,7 +30,7 @@ class attendeesTableViewController: PFQueryTableViewController {
         self.parseClassName = "Activity"
         self.textKey = "Goingto"
         self.pullToRefreshEnabled = true
-        self.objectsPerPage = 50
+        self.objectsPerPage = 1000
     }
     
     
@@ -105,13 +105,13 @@ class attendeesTableViewController: PFQueryTableViewController {
         let cell : customTableViewCell = tableView.dequeueReusableCellWithIdentifier("Cell") as! customTableViewCell
         
      
-        let userstring =  object.objectForKey("user") as? PFUser
+        let userstring =  object.objectForKey("user") as! PFUser
         let username = userstring
         therequesteduser = username
         
         let partyrequest = object.objectForKey("request") as? Bool
         if partyrequest == true {
-        cell.sentence.text = username!.username!  + " is going to your party"
+            cell.sentence.text = username.username!  + " wants to go to your party"
             
             
             
@@ -121,7 +121,22 @@ class attendeesTableViewController: PFQueryTableViewController {
             
             cell.attendeespic.layer.borderColor = UIColor.blackColor().CGColor
             cell.attendeespic.layer.borderWidth = 1.0
-    
+            
+            
+        }
+        
+        if partyrequest == false {
+            cell.sentence.text = username.username!  + " is going to your party"
+            
+            
+            
+            cell.attendeespic.layer.cornerRadius = cell.attendeespic.frame.size.width/2
+            cell.attendeespic.clipsToBounds = true
+            cell.attendeespic.layer.masksToBounds = true
+            
+            cell.attendeespic.layer.borderColor = UIColor.blackColor().CGColor
+            cell.attendeespic.layer.borderWidth = 1.0
+            
             
         }
         

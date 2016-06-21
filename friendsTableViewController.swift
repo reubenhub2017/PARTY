@@ -100,6 +100,15 @@ class friendsTableViewController: PFQueryTableViewController {
                     unuserfollowbutton = otherUse
                     
                     cell.userfollower.text = otherUse?.username
+        
+        
+        let pushQuery = PFInstallation.query()!
+        pushQuery.whereKey("username", equalTo: otherUse! ) //friend is a PFUser object
+        
+        let push = PFPush()
+        push.setQuery(pushQuery)
+        push.setMessage("\(PFUser.currentUser()!.username!) accepted your party request")
+        push.sendPushInBackground()
                   
 
            
